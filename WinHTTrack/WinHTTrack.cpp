@@ -201,6 +201,7 @@ int Eval_Exception ( int n_except )
 }
 
 #include "mmsystem.h"
+#include "OurCommandLineInfo.h"
 
 static void httrackErrorCallback(const char* msg, const char* file, int line) {
   CrashReportReport(msg, file, line);
@@ -314,7 +315,7 @@ BOOL CWinHTTrackApp::InitInstance()
   // DOC //
 
   // Parse command line for standard shell commands, DDE, file open
-  CCommandLineInfo cmdInfo;
+  OurCommandLineInfo cmdInfo;
   ParseCommandLine(cmdInfo);
 
   TCHAR ModulePath[MAX_PATH + 1];

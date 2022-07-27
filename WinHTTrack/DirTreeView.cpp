@@ -17,7 +17,7 @@ extern "C" {
 };
 
 #include "MainFrm.h"
-
+#include "OurCommandLineInfo.h"
 CDirTreeView* this_DirTreeView=NULL;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -133,16 +133,20 @@ void CDirTreeView::RefreshTree() {
           char name[256];
           strcpybuff(name,a);
           strcatbuff(name,"\\");
-          SHFILEINFO info;
-          if (SHGetFileInfo(name,0,&info,sizeof(info),SHGFI_SMALLICON | SHGFI_SYSICONINDEX | SHGFI_SHELLICONSIZE | SHGFI_DISPLAYNAME)) {
-            //SHGetFileInfo(name,0,&info,sizeof(info),SHGFI_SMALLICON | SHGFI_SYSICONINDEX | SHGFI_TYPENAME | SHGFI_SHELLICONSIZE | SHGFI_DISPLAYNAME | SHGFI_ATTRIBUTES); 
-            tree.SetItemImage(it,info.iIcon,info.iIcon);
-            CString disp=info.szDisplayName;
-            if (disp.ReverseFind('('))
-              disp=disp.Left(disp.Find('('));
-            disp+="<"; disp+=a; disp+=">"; 
-            tree.SetItemText(it,disp);
-          }
+		  if (!OurCommandLineInfo::m_bSkipNetwork || !PathIsNetworkPathA(name)) {
+
+			  SHFILEINFO info;
+			  if (SHGetFileInfo(name, 0, &info, sizeof(info), SHGFI_SMALLICON | SHGFI_SYSICONINDEX | SHGFI_SHELLICONSIZE | SHGFI_DISPLAYNAME)) {
+				  //SHGetFileInfo(name,0,&info,sizeof(info),SHGFI_SMALLICON | SHGFI_SYSICONINDEX | SHGFI_TYPENAME | SHGFI_SHELLICONSIZE | SHGFI_DISPLAYNAME | SHGFI_ATTRIBUTES); 
+				  tree.SetItemImage(it, info.iIcon, info.iIcon);
+				  CString disp = info.szDisplayName;
+				  if (disp.ReverseFind('('))
+					  disp = disp.Left(disp.Find('('));
+				  disp += "<"; disp += a; disp += ">";
+				  tree.SetItemText(it, disp);
+			  }
+		  }else
+			tree.DeleteItem(it);
         }
 
         a=next;
@@ -154,7 +158,7 @@ void CDirTreeView::RefreshTree() {
   BuildTrackHandles();
 }
 
-/* remise à zéro */
+/* remise ï¿½ zï¿½ro */
 void CDirTreeView::ResetTree() {
   if (!GetTreeCtrl()) return;   /* error */
   RefreshTree();
@@ -233,7 +237,7 @@ void CDirTreeView::OnDblclk(NMHDR* pNMHDR, LRESULT* pResult)
               //}
             }
           } else {
-            /* Lancer ShellEx en arrière plan */
+            /* Lancer ShellEx en arriï¿½re plan */
             AfxBeginThread(CDirTreeViewShellEx,new CString(name));
           }
         }
@@ -357,7 +361,7 @@ HTREEITEM CDirTreeView::GetPathItem(CString path,BOOL open,BOOL nofail,BOOL nohi
       if (right.GetLength())
         position=GetPathItem(right,open,nofail,TRUE,position);
       else
-        return_value=position;      // trouvé
+        return_value=position;      // trouvï¿½
       position=NULL;
     }
     if (position)
@@ -381,7 +385,7 @@ HTREEITEM CDirTreeView::GetPathItem(CString path,BOOL open,BOOL nofail,BOOL nohi
 BOOL CDirTreeView::EnsureVisible(CString path) {
   if (!GetTreeCtrl()) return FALSE;   /* error */
 #if 0
-  /* Lancer refresh en arrière plan */
+  /* Lancer refresh en arriï¿½re plan */
   refreshPath=path;
   StopTimer();
   AfxBeginThread(CDirTreeViewRefresh,this);
@@ -434,7 +438,7 @@ BOOL CDirTreeView::RefreshDir(HTREEITEM position,BOOL nohide) {
     if (!nohide)
       tree.ModifyStyle(WS_VISIBLE,0);
 
-    { // backuper éléments visibles
+    { // backuper ï¿½lï¿½ments visibles
       HTREEITEM it=tree.GetChildItem(position);
       int backup_visibles_count=0;
       while(it) {
@@ -496,7 +500,7 @@ BOOL CDirTreeView::RefreshDir(HTREEITEM position,BOOL nohide) {
         h = FindFirstFile(path+"*.*",&find);
     }
 
-    // restaurer éléments visibles
+    // restaurer ï¿½lï¿½ments visibles
     RestoreVisibles(position,backup_visibles);
 
     // liste visible
@@ -518,12 +522,12 @@ void CDirTreeView::RestoreVisibles(HTREEITEM position,CString& backup_visibles) 
   if (!tree) return;   /* error */
 
   if (backup_visibles.GetLength()) {
-    // réouvrir les éléments visibles
+    // rï¿½ouvrir les ï¿½lï¿½ments visibles
     HTREEITEM it=tree.GetChildItem(position);
     while(it) {
       if (backup_visibles.Find("\n"+GetItemPath(it)+"\n")>=0) {
         tree.Expand(it,TVE_EXPAND);
-        RefreshDir(it,TRUE);       /* car appelé par RefreshDir lui même */
+        RefreshDir(it,TRUE);       /* car appelï¿½ par RefreshDir lui mï¿½me */
         RestoreVisibles(it,backup_visibles);
       }
       it=tree.GetNextSiblingItem(it);
@@ -563,7 +567,7 @@ void CDirTreeView::BuildTrackHandles()
 {
   if (!GetTreeCtrl()) return;   /* error */
   DestroyTrackHandles();
-  /* Lecture éléments du root visibles (non, c'est pas récursif vu que ce sont les élts visibles) */
+  /* Lecture ï¿½lï¿½ments du root visibles (non, c'est pas rï¿½cursif vu que ce sont les ï¿½lts visibles) */
   CTreeCtrl& it=GetTreeCtrl();
   HTREEITEM pos=it.GetFirstVisibleItem();
   while(pos) {
@@ -571,7 +575,7 @@ void CDirTreeView::BuildTrackHandles()
     CFileStatus status;
     if (it.ItemHasChildren(pos)) {        /* surveiller si enfants */
       if (it.GetItemState(pos,TVIF_STATE) & TVIS_EXPANDED) {    /* si ouvert */
-        if (CFile::GetStatus(path.Left(path.GetLength()-1),status)) {   // répertoire (note: path sans le / final)
+        if (CFile::GetStatus(path.Left(path.GetLength()-1),status)) {   // rï¿½pertoire (note: path sans le / final)
           if (status.m_attribute & 0x10 ) {       /* directory = 0x10 */
             whandle[count_whandle]=FindFirstChangeNotification(path,FALSE,FILE_NOTIFY_CHANGE_FILE_NAME|FILE_NOTIFY_CHANGE_DIR_NAME);
             if (whandle[count_whandle] != INVALID_HANDLE_VALUE) {
@@ -594,7 +598,7 @@ void CDirTreeView::DoTrackHandles()
 
   if (count_whandle) {
     int r=(WaitForMultipleObjects(count_whandle,whandle,FALSE,0)-WAIT_OBJECT_0);
-    if ( (r>=0) && (r<count_whandle) ) {      // un item a changé
+    if ( (r>=0) && (r<count_whandle) ) {      // un item a changï¿½
       DestroyTrackHandles();
       HTREEITEM pos=pos_whandle[r];
       RefreshPos(pos);

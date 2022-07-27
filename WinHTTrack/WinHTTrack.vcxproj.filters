@@ -189,6 +189,9 @@
     <ClInclude Include="XSHBrowseForFolder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OurCommandLineInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\ico00001.ico">
@@ -405,6 +408,9 @@
     <ClCompile Include="..\httrack\src\md5.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OurCommandLineInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinHTTrack.rc">
@@ -413,5 +419,11 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="$(ZLibDir)lib\$(Platform)\$(Configuration)\$(ZLibName).lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="../httrack/lang.def">
+      <Filter>Source Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="../httrack/lang.indexes" />
   </ItemGroup>
 </Project>

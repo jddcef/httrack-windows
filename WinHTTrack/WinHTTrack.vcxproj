@@ -167,7 +167,8 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <SupportJustMyCode>true</SupportJustMyCode>
-      <ShowIncludes>true</ShowIncludes>
+      <ShowIncludes>
+      </ShowIncludes>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -222,6 +223,7 @@
     <ClInclude Include="OptionTab7.h" />
     <ClInclude Include="OptionTab8.h" />
     <ClInclude Include="OptionTab9.h" />
+    <ClInclude Include="OurCommandLineInfo.h" />
     <ClInclude Include="ProxyId.h" />
     <ClInclude Include="RasLoad.h" />
     <ClInclude Include="Resource.h" />
@@ -301,6 +303,7 @@
     <ClCompile Include="OptionTab7.cpp" />
     <ClCompile Include="OptionTab8.cpp" />
     <ClCompile Include="OptionTab9.cpp" />
+    <ClCompile Include="OurCommandLineInfo.cpp" />
     <ClCompile Include="ProxyId.cpp" />
     <ClCompile Include="RasLoad.cpp" />
     <ClCompile Include="Shell.cpp" />
@@ -318,17 +321,16 @@
     <ClCompile Include="WizTab.cpp" />
     <ClCompile Include="XSHBrowseForFolder.cpp" />
   </ItemGroup>
-	<ItemGroup>
-		<CopyFileToFolders Include="../httrack/lang.def">
-			<DeploymentContent>true</DeploymentContent>
-			<FileType>Document</FileType>
-		</CopyFileToFolders>
-		<CopyFileToFolders Include="../httrack/lang.indexes">
-			<DeploymentContent>true</DeploymentContent>
-			<FileType>Document</FileType>
-		</CopyFileToFolders>
-	</ItemGroup>
-	
+  <ItemGroup>
+    <CopyFileToFolders Include="../httrack/lang.def">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="../httrack/lang.indexes">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinHTTrack.rc" />
   </ItemGroup>
@@ -348,12 +350,12 @@
       <UserProperties RESOURCE_FILE="WinHTTrack.rc" />
     </VisualStudio>
   </ProjectExtensions>
-	<Target Name="AfterBuild">
-		<ItemGroup>
-			<ANTLR Include="../httrack/lang/**/*.*" />
-		</ItemGroup>
-		<Copy SourceFiles="@(ANTLR)" DestinationFolder="$(TargetDir)\lang\%(RecursiveDir)" SkipUnchangedFiles="true" />
-	</Target>
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <ANTLR Include="../httrack/lang/**/*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ANTLR)" DestinationFolder="$(TargetDir)\lang\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
