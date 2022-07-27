@@ -698,7 +698,7 @@ BOOL CWinHTTrackApp::RmDir(CString srcpath) {
     } while(FindNextFile(h,&find));
     FindClose(h);
   }
-  if (rmdir(srcpath)) {
+  if (_rmdir(srcpath)) {
     AfxMessageBox("Error deleting "+srcpath);
     return FALSE;
   }

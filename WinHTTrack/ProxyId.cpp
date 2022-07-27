@@ -62,7 +62,7 @@ BOOL CProxyId::OnInitDialog()
   EnableToolTips(true);     // TOOL TIPS
   SetForegroundWindow();   // yop en premier plan!
 	
-  if (LANG_T(-1)) {    // Patcher en français
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     SetWindowTextCP(this,  LANG(LANG_R1));
     SetDlgItemTextCP(this, IDC_STATIC_adr,LANG(LANG_R2));
     SetDlgItemTextCP(this, IDC_STATIC_port,LANG(LANG_R3));

@@ -92,7 +92,7 @@ extern "C" {
 //#define HTS_XGMETHOD 2    // 1: AfxBeginThread 2: _beginthread
 // --- --- --- --- Options --- --- --- ---
 //int INREDRAW_LOCKED=0;      // refresh graphique en cours
-//int INFILLMEM_LOCKED=0;     // refresh mémoire en cours
+//int INFILLMEM_LOCKED=0;     // refresh mï¿½moire en cours
 int HTTRACK_result=0;
 //
 CInfoUrl* _Cinprogress_inst=NULL;
@@ -118,13 +118,13 @@ httrackp *global_opt = NULL;
 // principal ---> robot & refresh data (thread 1)
 //           ---> refresh graphique    (thread 2)
 //           GO!> boucle gestion domodal() et boutons
-// arrêt: principal demande l'arrêt (termine_requested)
+// arrï¿½t: principal demande l'arrï¿½t (termine_requested)
 //        thread1 active termine et que thread2 ait fini de refresher
 //        thread2 se termine
-//        thread1 retourne 0 à hts_loop
+//        thread1 retourne 0 ï¿½ hts_loop
 //        le robot termine
 //        le thread1 active termine, termine le formulaire et se termine
-//        principal ayant quitté le formulaire affiche le message de fin
+//        principal ayant quittï¿½ le formulaire affiche le message de fin
 
 
 // htslib.c
@@ -132,7 +132,7 @@ extern "C" {
   HTSEXT_API void qsec2str(char *st,TStamp t);
 }
 
-// construction index général
+// construction index gï¿½nï¿½ral
 // void Build_TopIndex();
 
 void compute_options() ;
@@ -321,7 +321,7 @@ BOOL CShellApp::InitInstance()
   maintab = new CMainTab("WinHTTrack Website Copier");
   
   // PATCH-->
-  // éxécution..
+  // ï¿½xï¿½cution..
   init_lance();
   
   delete maintab;
@@ -353,7 +353,7 @@ char* _SN(LLint n) {
   return str;
 }
 
-// t existe-t-il comme répertoire?
+// t existe-t-il comme rï¿½pertoire?
 int dir_check(char* t) {
   int dir;
   FILE* fp=fopen(t,"rb");
@@ -372,7 +372,7 @@ void check_temp(char* t,char* s) {
 
 // PATCH-->
 // Routines gestion dials
-// Patché pour 100% dials
+// Patchï¿½ pour 100% dials
 
 
 void CShellApp::init_lance() {
@@ -428,7 +428,7 @@ int Save_current_profile(int ask) {
     winprofile+="winprofile.ini";
     Write_profile(winprofile,0);
     
-    // marquer document comme "sauvé"
+    // marquer document comme "sauvï¿½"
     if (this_CSplitterFrame)
       this_CSplitterFrame->SetSaved();
     
@@ -450,8 +450,8 @@ int check_continue(char* pathlog) {
       ||
       (fexist(fconcat(catbuff2,sizeof(catbuff2),path_log,"hts-cache/new.dat")))
       && (fexist(fconcat(catbuff3,sizeof(catbuff3),path_log,"hts-cache/new.ndx")))
-      ) {  // il existe déja un cache précédent.. renommer
-      //if (fexist(fconcat(path_log,"hts-cache/doit.log"))) {    // un cache est présent
+      ) {  // il existe dï¿½ja un cache prï¿½cï¿½dent.. renommer
+      //if (fexist(fconcat(path_log,"hts-cache/doit.log"))) {    // un cache est prï¿½sent
       return 1;
       //}
     }
@@ -460,7 +460,7 @@ int check_continue(char* pathlog) {
       ||
       (fexist(fconcat(catbuff2,sizeof(catbuff2),path_log,"hts-cache/old.dat")))
       && (fexist(fconcat(catbuff3,sizeof(catbuff3),path_log,"hts-cache/old.ndx")))
-      ) {  // il existe déja un ancien cache précédent.. renommer
+      ) {  // il existe dï¿½ja un ancien cache prï¿½cï¿½dent.. renommer
       return 1;
     }
     AfxMessageBox(LANG(LANG_F2 /*"There is no cache in the directory indicated\nWinHTTrack can not find any interrupted mirror!"*/),MB_OK+MB_ICONSTOP);
@@ -543,7 +543,7 @@ void compute_options() {
     ShellOptions->filelist = st;
   }
   
-  // stocker état et hh/mm/ss
+  // stocker ï¿½tat et hh/mm/ss
   ShellOptions->hh = dialog2->m_hh;
   ShellOptions->mm = dialog2->m_mm;
   ShellOptions->ss = dialog2->m_ss;
@@ -582,7 +582,7 @@ void compute_options() {
     //ShellOptions->cache[0]='\0'; 
   }
   
-  // ne pas recharger fichiers déja pris mais effacés
+  // ne pas recharger fichiers dï¿½ja pris mais effacï¿½s
   if(maintab->m_option9.m_norecatch) ShellOptions->norecatch = "%n"; else ShellOptions->norecatch = "";
   
   // proxy
@@ -811,13 +811,13 @@ void compute_options() {
 
   /* autres options: RAS */
   if (dialog2->m_rasdisc)
-    disconnect=1;     /* déconnexion à la fin */
+    disconnect=1;     /* dï¿½connexion ï¿½ la fin */
   else
     disconnect=0;
 
   /* autres options: Shutdown */
   if (dialog2->m_rasshut)
-    shutdown_pc=1;     /* étendre à la fin */
+    shutdown_pc=1;     /* ï¿½tendre ï¿½ la fin */
   else
     shutdown_pc=0;
 }
@@ -942,16 +942,16 @@ BOOL InitiateSystemShutdownExWithPriv(
 }
 
 
-// Les routines à définir:
-int __cdecl httrackengine_check(t_hts_callbackarg *carg, httrackp *opt, const char* adr,const char* fil,int status) {  // appelé par le wizard
+// Les routines ï¿½ dï¿½finir:
+int __cdecl httrackengine_check(t_hts_callbackarg *carg, httrackp *opt, const char* adr,const char* fil,int status) {  // appelï¿½ par le wizard
   return -1;
 }
-int __cdecl httrackengine_check_mime(t_hts_callbackarg *carg, httrackp *opt, const char* adr,const char* fil,const char* mime,int status) {  // appelé par le wizard
+int __cdecl httrackengine_check_mime(t_hts_callbackarg *carg, httrackp *opt, const char* adr,const char* fil,const char* mime,int status) {  // appelï¿½ par le wizard
   ATLTRACE(__FUNCTION__ " : check %s%s : <%s>\r\n", adr, fil, mime);
   return -1;
 }
 EXECUTION_STATE (WINAPI * SetThreadExecutionState_)(IN EXECUTION_STATE) = NULL;
-void __cdecl httrackengine_init(t_hts_callbackarg *carg) {    // appelé lors de l'init de HTTRACK, avant le début d'un miroir
+void __cdecl httrackengine_init(t_hts_callbackarg *carg) {    // appelï¿½ lors de l'init de HTTRACK, avant le dï¿½but d'un miroir
   ATLTRACE(__FUNCTION__ " : init\r\n");
   // Finished
   PlaySound("MirrorStarted", NULL, SND_ASYNC | SND_NOWAIT | SND_APPLICATION);
@@ -971,19 +971,19 @@ void __cdecl httrackengine_init(t_hts_callbackarg *carg) {    // appelé lors de 
   httrackengine_loop(NULL, NULL, NULL, 0, 0, 0, 0, NULL, 0);  // init
   //printf("DEMARRAGE DU MIROIR DETECTE\n");  
 }
-void __cdecl httrackengine_uninit(t_hts_callbackarg *carg) {  // appelé en fin de miroir (peut être utile!!!)
+void __cdecl httrackengine_uninit(t_hts_callbackarg *carg) {  // appelï¿½ en fin de miroir (peut ï¿½tre utile!!!)
   ATLTRACE(__FUNCTION__ " : uninit\r\n");
   // Finished
   PlaySound("MirrorFinished", NULL, SND_ASYNC | SND_NOWAIT | SND_APPLICATION);
 
  // Disconnect RAS
 #if USE_RAS
-  if (LibRasUse) {        /* librairie RAS chargée */
-    if (disconnect) {     /* on doit déconnecter */
-      if (connected) {    /* on a initié une connexion */
+  if (LibRasUse) {        /* librairie RAS chargï¿½e */
+    if (disconnect) {     /* on doit dï¿½connecter */
+      if (connected) {    /* on a initiï¿½ une connexion */
         if (conn)
           LibRas->RasHangUp(conn);
-      } else {            /* tout déconnecter */
+      } else {            /* tout dï¿½connecter */
         // On coupe tout (non, pas bourrin)
         DWORD size;
         RASCONN* adr;
@@ -1027,16 +1027,16 @@ void __cdecl httrackengine_uninit(t_hts_callbackarg *carg) {  // appelé en fin d
       );
   }
 }
-int __cdecl httrackengine_start(t_hts_callbackarg *carg, httrackp *opt) {   // appelé lors du démarrage du miroir (premières requètes)
+int __cdecl httrackengine_start(t_hts_callbackarg *carg, httrackp *opt) {   // appelï¿½ lors du dï¿½marrage du miroir (premiï¿½res requï¿½tes)
   ATLTRACE(__FUNCTION__ " : starting\r\n");
 #if USE_RAS
   // connexion RAS
-  has_started=1;    // démarrage
+  has_started=1;    // dï¿½marrage
   connected=0;
   conn = NULL;
   memset(&SInfo, 0, sizeof(SInfo));
   if (LibRasUse) {
-    if (ShellOptions->_RasString.GetLength()>0) {    // sélection provider
+    if (ShellOptions->_RasString.GetLength()>0) {    // sï¿½lection provider
       if (!LibRas->RasDial(NULL,NULL,&ShellOptions->_dial,NULL,NULL,&conn)) {
         RASCONNSTATUS status;
         do {
@@ -1053,7 +1053,7 @@ int __cdecl httrackengine_start(t_hts_callbackarg *carg, httrackp *opt) {   // a
           }
         } while(connected==0);
       } else {
-        strcpybuff(connected_err,LANG(LANG_F3 /*"Could not connect to provider","Impossible d'établir la connexion"*/));
+        strcpybuff(connected_err,LANG(LANG_F3 /*"Could not connect to provider","Impossible d'ï¿½tablir la connexion"*/));
         connected=-1;
         //termine=1;
       }
@@ -1069,7 +1069,7 @@ int __cdecl httrackengine_start(t_hts_callbackarg *carg, httrackp *opt) {   // a
   return 1;
 #endif
 }
-int  httrackengine_end(t_hts_callbackarg *carg, httrackp *opt) {     // appelé lors de la fin du miroir (plus de liens à charger)
+int  httrackengine_end(t_hts_callbackarg *carg, httrackp *opt) {     // appelï¿½ lors de la fin du miroir (plus de liens ï¿½ charger)
   ATLTRACE(__FUNCTION__ " : end\r\n");
   WHTT_LOCK();
   termine=1;
@@ -1091,7 +1091,7 @@ int __cdecl httrackengine_htmlpostprocess(t_hts_callbackarg *carg, httrackp *opt
   //hts_free(old);
   return 1;
 }
-int __cdecl httrackengine_htmlcheck(t_hts_callbackarg *carg, httrackp *opt, char* html,int len,const char* url_address,const char* url_file) {    // appelé à chaque fois qu'un html doit être scanné (utile pour la prospection mais inutile ici)
+int __cdecl httrackengine_htmlcheck(t_hts_callbackarg *carg, httrackp *opt, char* html,int len,const char* url_address,const char* url_file) {    // appelï¿½ ï¿½ chaque fois qu'un html doit ï¿½tre scannï¿½ (utile pour la prospection mais inutile ici)
   return 1;
 }
 int __cdecl httrackengine_chopt(t_hts_callbackarg *carg, httrackp *opt) {
@@ -1107,13 +1107,13 @@ void __cdecl httrackengine_filesave2(t_hts_callbackarg *carg, httrackp *opt, con
 // Le routine la plus utile sans doute: elle refresh les tableaux
 // C'est la 2e routine en thread qui assure le refresh graphique
 // (plus efficace)
-// -->C'est elle qui décide de tout arrêter si elle détecte in termine_request<--
+// -->C'est elle qui dï¿½cide de tout arrï¿½ter si elle dï¿½tecte in termine_request<--
 int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
                                lien_back* back,int back_max,int back_index,
                                int lien_n,int lien_tot,
                                int stat_time,
-                               hts_stat_struct* stats) {    // appelé à chaque boucle de HTTrack
-  static char s[HTS_URLMAXSIZE*2]="";  // utilisé plus loin
+                               hts_stat_struct* stats) {    // appelï¿½ ï¿½ chaque boucle de HTTrack
+  static char s[HTS_URLMAXSIZE*2]="";  // utilisï¿½ plus loin
   int stat_written=-1;
   int stat_updated=-1;
   int stat_errors=-1;
@@ -1209,7 +1209,7 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
       // OPTI int rate;
       SInfo.ask_refresh=0;
       
-      // pour éviter temps cpu consommé trop grand
+      // pour ï¿½viter temps cpu consommï¿½ trop grand
       // Sleep(10);
       
       // initialiser ft
@@ -1246,7 +1246,7 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
       //
 #endif
       
-      // calculer heure si ce n'est déja fait
+      // calculer heure si ce n'est dï¿½ja fait
       if (stat_time<0)
         SInfo.stat_time=(int) (time_local()-SInfo.stat_timestart);
       
@@ -1256,7 +1256,7 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
       else
         rate=0;    // pas d'infos
       
-      // stocker infos: octets transférés, temps, etc.
+      // stocker infos: octets transfï¿½rï¿½s, temps, etc.
       if (stat_bytes>=0) SInfo.stat_bytes=stat_bytes;      // bytes
       if (stat_time>=0) SInfo.stat_time=stat_time;         // time
       if (lien_tot>=0) SInfo.lien_tot=lien_tot; // nb liens
@@ -1267,19 +1267,19 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
       if (SInfo.irate<0) SInfo.irate=SInfo.rate;
       if (nbk>=0) SInfo.stat_back=nbk;
       
-      // back: tableau de back_max éléments de cache
-      // back_max: nombre d'éléments ^^^^
-      // lien_tot: nombre total de liens traités pour le moment
-      // stat_bytes: octets sauvegardés
-      // stat_bytes_recv: octets téléchargés
-      // stat_time: temps en seconde depuis le début du miroir
-      // stat_nsocket: nombre de sockets connectées actuellement
-      // on peut en déduire rate=stat_bytes_recv/stat_time
+      // back: tableau de back_max ï¿½lï¿½ments de cache
+      // back_max: nombre d'ï¿½lï¿½ments ^^^^
+      // lien_tot: nombre total de liens traitï¿½s pour le moment
+      // stat_bytes: octets sauvegardï¿½s
+      // stat_bytes_recv: octets tï¿½lï¿½chargï¿½s
+      // stat_time: temps en seconde depuis le dï¿½but du miroir
+      // stat_nsocket: nombre de sockets connectï¿½es actuellement
+      // on peut en dï¿½duire rate=stat_bytes_recv/stat_time
       
       // printf("loop.. %d liens, %d octets, %d secondes, %d sockets, TAUX=%d\n",lien_tot,stat_bytes,stat_time,stat_nsocket,rate);
       
       // parcourir registre des liens
-      if (back_index>=0) {  // seulement si index passé
+      if (back_index>=0) {  // seulement si index passï¿½
         int j,k;
         int index=0;
         int ok=0;         // idem
@@ -1301,7 +1301,7 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
           }
         }
         for(k=0;k<2;k++) {    // 0: lien en cours 1: autres liens
-          for(j=0;(j<3) && (index<NStatsBuffer);j++) {  // passe de priorité
+          for(j=0;(j<3) && (index<NStatsBuffer);j++) {  // passe de prioritï¿½
             int _i;
             for(_i=0+k;(_i< max(back_max*k,1) ) && (index<NStatsBuffer);_i++) {  // no lien
               int i=(back_index+_i)%back_max;    // commencer par le "premier" (l'actuel)
@@ -1311,12 +1311,12 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
                 switch(j) {
                 case 0:     // prioritaire
                   if ((back[i].status>0) && (back[i].status<99)) {
-                    strcpybuff(StatsBuffer[index].etat,LANG(LANG_F4 /*"receive","réception"*/)); ok=1;
+                    strcpybuff(StatsBuffer[index].etat,LANG(LANG_F4 /*"receive","rï¿½ception"*/)); ok=1;
                   }
                   break;
                 case 1:
                   if (back[i].status==99) {
-                    strcpybuff(StatsBuffer[index].etat,LANG(LANG_F5 /*"request","requète"*/)); ok=1;
+                    strcpybuff(StatsBuffer[index].etat,LANG(LANG_F5 /*"request","requï¿½te"*/)); ok=1;
                   }
                   else if (back[i].status==STATUS_CONNECTING) {
                     strcpybuff(StatsBuffer[index].etat,LANG(LANG_F6 /*"connect","connexion"*/)); ok=1;
@@ -1345,9 +1345,9 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
                   }
                   break;
                 default:
-                  if (back[i].status==0) {  // prêt
+                  if (back[i].status==0) {  // prï¿½t
                     if ((back[i].r.statuscode==200)) {
-                      strcpybuff(StatsBuffer[index].etat,LANG(LANG_F8 /*"ready","prêt"*/)); ok=1;
+                      strcpybuff(StatsBuffer[index].etat,LANG(LANG_F8 /*"ready","prï¿½t"*/)); ok=1;
                     }
                     else if ((back[i].r.statuscode>=100) && (back[i].r.statuscode<=599)) {
                       char tempo[256]; tempo[0]='\0';
@@ -1399,11 +1399,11 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
                   
                   //if (back[i].url_fil[0]!='/') printf("/");
                   
-                  if (back[i].r.totalsize>0) {  // taille prédéfinie
+                  if (back[i].r.totalsize>0) {  // taille prï¿½dï¿½finie
                     StatsBuffer[index].sizetot=back[i].r.totalsize;
                     StatsBuffer[index].size=back[i].r.size;
-                  } else {  // pas de taille prédéfinie
-                    if (back[i].status==0) {  // prêt
+                  } else {  // pas de taille prï¿½dï¿½finie
+                    if (back[i].status==0) {  // prï¿½t
                       StatsBuffer[index].sizetot=back[i].r.size;
                       StatsBuffer[index].size=back[i].r.size;
                     } else {
@@ -1424,7 +1424,7 @@ int __cdecl httrackengine_loop(t_hts_callbackarg *carg, httrackp *opt,
 #else
     inprogress_refresh();  // tout de suite (non multithread)
 #endif
-    // INFILLMEM_LOCKED=0;    // délocker interface
+    // INFILLMEM_LOCKED=0;    // dï¿½locker interface
   }
   WHTT_UNLOCK();
   return (termine==0);
@@ -1450,7 +1450,7 @@ int inprogress_refresh() {
         if (!soft_term_requested) {
           if (!hts_setpause(global_opt, -1)) {
             if (!(parsing=hts_is_parsing(global_opt, -1)))
-              SetDlgItemTextCP(inprogress, IDC_inforun,LANG(LANG_F10 /*"Receiving files.","Réception des fichiers"*/)); 
+              SetDlgItemTextCP(inprogress, IDC_inforun,LANG(LANG_F10 /*"Receiving files.","Rï¿½ception des fichiers"*/)); 
             else {
               switch(hts_is_testing(global_opt)) {
               case 0:
@@ -1611,7 +1611,7 @@ int inprogress_refresh() {
 #if USE_RAS
           if (!has_started)
 #endif
-            SetDlgItemTextCP(inprogress, IDC_nm0,LANG(LANG_F15 /*"Waiting for specific hour to start","Attente de l'heure programmée pour démarrer"*/));
+            SetDlgItemTextCP(inprogress, IDC_nm0,LANG(LANG_F15 /*"Waiting for specific hour to start","Attente de l'heure programmï¿½e pour dï¿½marrer"*/));
 #if USE_RAS
           else
             SetDlgItemTextCP(inprogress, IDC_nm0,LANG(LANG_F16 /*"Connecting to provider","Connexion au provider"*/));
@@ -1619,13 +1619,13 @@ int inprogress_refresh() {
           inprogress->m_sl0.SetRange(0,SInfo.ft);
           inprogress->m_sl0.SetPos(SInfo.ft-SInfo.stat_time);  // temps restant
           // SetDlgItemTextCP(inprogress, IDC_nm1,_SN(ft));
-          if (icn && (!this_CSplitterFrame->iconifie)) {  // minimisée mais pas en icone
+          if (icn && (!this_CSplitterFrame->iconifie)) {  // minimisï¿½e mais pas en icone
             sprintf(info,"[%d s]",SInfo.stat_time);
           } else {
             sprintf(info,LANG(LANG_F17 /*"Mirror waiting [%d seconds]","Miroir en attente [%d secondes]"*/),SInfo.stat_time);
           }
         } else {
-          if (icn) {  // minimisée
+          if (icn) {  // minimisï¿½e
             sprintf(info,"[%s]",lnk);
           } else {
             char byteb[256];
@@ -1633,9 +1633,9 @@ int inprogress_refresh() {
             sprintf(info,LANG(LANG_F18),lnk,byteb);
           }
         }
-        if (strcmp(info,last_info)) {       /* a changé */
+        if (strcmp(info,last_info)) {       /* a changï¿½ */
           strcpybuff(last_info,info);           /* recopier */
-          if (this_CSplitterFrame->iconifie)  // minimisé icone
+          if (this_CSplitterFrame->iconifie)  // minimisï¿½ icone
             this_CSplitterFrame->IconChange(last_info);
           else
             SetWindowTextCP(GetMainWindow(), last_info);
@@ -1966,7 +1966,7 @@ void lance(void) {
     args.Add(ShellOptions->proxy + ":" + ShellOptions->port);
   }
   
-  // mode spider, mettre après options
+  // mode spider, mettre aprï¿½s options
   if (ShellOptions->choixdeb[0]=='!') {
     args.Add("--testlinks");
   } else if (ShellOptions->choixdeb[0]=='Y') {
@@ -2043,11 +2043,11 @@ void lance(void) {
         if ((path_log[strlen(path_log)-1]!='/') && (path_log[strlen(path_log)-1]!='\\'))
           strcatbuff(path_log,"/");
         
-        // on efface le doit.log, pour annuler les parametres anciens et en redéfinir de nouveaux
-        // c'est ici une logique qui diffère de la version en ligne de commande
+        // on efface le doit.log, pour annuler les parametres anciens et en redï¿½finir de nouveaux
+        // c'est ici une logique qui diffï¿½re de la version en ligne de commande
         if (fexist(fconcat(catbuff,sizeof(catbuff),path_log,"hts-cache/new.zip"))
           || fexist(fconcat(catbuff2,sizeof(catbuff2),path_log,"hts-cache/new.ndx"))
-          ) {    // un cache est présent
+          ) {    // un cache est prï¿½sent
           if (fexist(fconcat(catbuff,sizeof(catbuff),path_log,"hts-cache/doit.log")))
             remove(fconcat(catbuff,sizeof(catbuff),path_log,"hts-cache/doit.log"));
           FILE* fp=fopen(fconcat(catbuff,sizeof(catbuff),path_log,"hts-cache/doit.log"),"wb");
@@ -2098,7 +2098,7 @@ void lance(void) {
     
     // non multithread
 #else
-#error "Non supporté"
+#error "Non supportï¿½"
 #endif
 
     /* Aborted mirror or finished? */
@@ -2125,7 +2125,7 @@ void lance(void) {
     //
     /* New pannel */
     if (result) {      // erreur?
-      strcpybuff(end_mirror_msg,LANG(LANG_F19 /*"A problem occured during the mirror\n  \"","Un problème est survenu pendant le miroir\n  \""*/));
+      strcpybuff(end_mirror_msg,LANG(LANG_F19 /*"A problem occured during the mirror\n  \"","Un problï¿½me est survenu pendant le miroir\n  \""*/));
       strcatbuff(end_mirror_msg,"\"");
       if (result != -100) {
         strcatbuff(end_mirror_msg,hts_errmsg(global_opt));
@@ -2140,7 +2140,7 @@ void lance(void) {
       strcatbuff(end_mirror_msg,LANG(LANG_F21 /*"\nSee the log file if necessary.\n\nClick OK to quit WinHTTrack.\n\nThanks for using WinHTTrack!","\nVoir le fichier log au besoin\n\nCliquez sur OK pour quitter WinHTTrack\n\nMerci d'utiliser WinHTTrack."*/));
       //AfxMessageBox(s,MB_OK+MB_ICONINFORMATION);
     } else {
-      strcpybuff(end_mirror_msg,LANG(LANG_F22 /*"The mirror is finished.\nClick OK to quit WinHTTrack.\nSee log file(s) if necessary to ensure that everything is OK.\n\nThanks for using WinHTTrack!","Le miroir est terminé\nCliquez sur OK pour quitter WinHTTrack\nVoir au besoin les fichiers d'audit pour vérifier que tout s'est bien passé\n\nMerci d'utiliser WinHTTrack!"*/));
+      strcpybuff(end_mirror_msg,LANG(LANG_F22 /*"The mirror is finished.\nClick OK to quit WinHTTrack.\nSee log file(s) if necessary to ensure that everything is OK.\n\nThanks for using WinHTTrack!","Le miroir est terminï¿½\nCliquez sur OK pour quitter WinHTTrack\nVoir au besoin les fichiers d'audit pour vï¿½rifier que tout s'est bien passï¿½\n\nMerci d'utiliser WinHTTrack!"*/));
       //AfxMessageBox("The mirror is finished.\nClic OK to quit WinHTTrack.\nSee log file(s) if necessary to ensure that everything is OK.\n\nThanks for using WinHTTrack!",MB_OK+MB_ICONINFORMATION);
       //        ShellExecute(0,"open",,"","",);
     }
@@ -2157,7 +2157,7 @@ void lance(void) {
         if (strlen(pathlog)>0)
           if ((pathlog[strlen(pathlog)-1]!='/') && (pathlog[strlen(pathlog)-1]!='\\'))
             strcatbuff(pathlog,"/");
-          // fichier log existe ou on est télécommandé par un !
+          // fichier log existe ou on est tï¿½lï¿½commandï¿½ par un !
           if ( (fsize(fconcat(catbuff,sizeof(catbuff),pathlog,"hts-err.txt")))>0) {
             strcatbuff(end_mirror_msg,LANG(LANG_F23 /*"\n\nTip: Click [View log file] to see warning or error messages","\n\nConseil: [Voir fichiers log] pour voir les erreurs et messages"*/));
           }
@@ -2416,12 +2416,12 @@ CString MyGetProfileStringFile(FILE* fp,CString dummy,CString name,CString value
 }
 
 //
-// Get_profile et Write_profile eux mêmes
+// Get_profile et Write_profile eux mï¿½mes
 //
-// path="" -> écrire dans la base (default)
-// path="<tmp>" -> écrire dans le fichier tempo commun
-// path="<mem>" -> écrire dans le buffer tempo commun
-// path="<null>" -> lire default (illégal en écriture)
+// path="" -> ï¿½crire dans la base (default)
+// path="<tmp>" -> ï¿½crire dans le fichier tempo commun
+// path="<mem>" -> ï¿½crire dans le buffer tempo commun
+// path="<null>" -> lire default (illï¿½gal en ï¿½criture)
 void Write_profile(CString path,int load_path) {
   CWaitCursor wait;
   CString strSection       = "OptionsValues";
@@ -2443,8 +2443,8 @@ void Write_profile(CString path,int load_path) {
       fclose(fp);
   }
   
-  //if (dialog3.m_hWnd == NULL) {    // pas initialisé
-  if (maintab->m_hWnd == NULL) {    // pas initialisé
+  //if (dialog3.m_hWnd == NULL) {    // pas initialisï¿½
+  if (maintab->m_hWnd == NULL) {    // pas initialisï¿½
     // checkboxes
     MyWriteProfileInt(path,strSection, "Near",maintab->m_option1.m_link);
     MyWriteProfileInt(path,strSection, "Test",maintab->m_option1.m_testall);
@@ -2689,7 +2689,7 @@ void Write_profile(CString path,int load_path) {
   }
   // liens, jokers etc. si mirror merge
   if (!(path.IsEmpty())) {
-    if (dialog1->m_hWnd == NULL) {    // pas initialisé
+    if (dialog1->m_hWnd == NULL) {    // pas initialisï¿½
       //MyWriteProfileString(path,strSection,"CurrentDepth",dialog1->m_depth);
       MyWriteProfileString(path,strSection,"CurrentUrl",dialog1->m_urls);
       if (dialog1->m_todo >= 0)
@@ -2728,13 +2728,13 @@ void Read_profile(CString path,int load_path) {
   CString strSection       = "OptionsValues";
   CString st;
   
-  // Vérification <tmp>
+  // Vï¿½rification <tmp>
   if (path=="<tmp>") {     // fichier temporaire
     if (!tmpf)
       return;
     else
       fflush(tmpf);
-  } else if (path=="<null>") {     // options par défaut
+  } else if (path=="<null>") {     // options par dï¿½faut
     path="<mem>";
     tmpm.deleteAll();              // effacer
   } else {
@@ -2867,7 +2867,7 @@ void Read_profile(CString path,int load_path) {
   
   // liens, jokers etc. si mirror merge
   if (!(path.IsEmpty())) {
-    if (dialog1->m_hWnd == NULL) {    // pas initialisé
+    if (dialog1->m_hWnd == NULL) {    // pas initialisï¿½
       //dialog1->m_depth  = MyGetProfileString(path,strSection,"CurrentDepth");
       dialog1->m_urls     = MyGetProfileString(path,strSection,"CurrentUrl");
       dialog1->m_todo     = MyGetProfileInt(path,strSection,"CurrentAction",0);
@@ -2921,7 +2921,7 @@ void InitRAS() {
 #endif
 }
 
-// Reconstruire index général!
+// Reconstruire index gï¿½nï¿½ral!
 void Build_TopIndex(BOOL check_empty) {
   CWaitCursor wait;
 
@@ -2943,7 +2943,7 @@ void Build_TopIndex(BOOL check_empty) {
     // FILE* fpo=fopen(fconcat(path,"/index.html"),"wb");
     //if (fpo) {
     {
-      // verif_backblue(opt, path);    // générer gif
+      // verif_backblue(opt, path);    // gï¿½nï¿½rer gif
       //
       // Header
       //fprintf(fpo,toptemplate_header,
@@ -2982,7 +2982,7 @@ void Build_TopIndex(BOOL check_empty) {
                     }
                     
                     if ((fexist(iname)) || (fexist(iname2)) ) {
-                      // vérifier existence de .whtt
+                      // vï¿½rifier existence de .whtt
                       strcpybuff(iname,CShellApp_app->end_path);
                       strcatbuff(iname,find.cFileName);
                       strcatbuff(iname,".whtt");
@@ -3014,7 +3014,7 @@ void Build_TopIndex(BOOL check_empty) {
               CString str;
               str.Format(LANG_DELETEEMPTYCONF,path);
               if (AfxMessageBox(str,MB_OKCANCEL)==IDOK) {
-                /* éliminer au besoin le .whtt */
+                /* ï¿½liminer au besoin le .whtt */
                 DeleteFile(path+".whtt");
                 if (!RemoveEmptyDir(path))
                   AfxMessageBox(LANG_ERRORDEL);

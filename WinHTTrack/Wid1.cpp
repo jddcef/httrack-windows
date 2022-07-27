@@ -143,7 +143,7 @@ BOOL Wid1::OnInitDialog( ) {
   CPropertyPage::OnInitDialog();
   EnableToolTips(true);     // TOOL TIPS
 
-  // inits après affichage
+  // inits aprï¿½s affichage
   url_status=-1;
   filelist_status=-1;
   //prox_status=-1;
@@ -157,20 +157,20 @@ BOOL Wid1::OnInitDialog( ) {
   //OnSelchangedepth();  // update disabled/normal
   OnSelchangetodo();
 
-  // Patcher l'interface pour les Français ;-)
-  if (LANG_T(-1)) {    // Patcher en français
+  // Patcher l'interface pour les Franï¿½ais ;-)
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     //SetDlgItemTextCP(this, ,"");
     SetWindowTextCP(this,  LANG(LANG_G30)); // "Bienvenue dans WinHTTrack!");
     SetDlgItemTextCP(this, IDC_STATIC_action,LANG(LANG_G31)); // "Action:");
     //SetDlgItemTextCP(this, IDC_STATIC_filters,LANG(LANG_G33)); // "Filtres (refuser/accepter liens) :");
     SetDlgItemTextCP(this, IDC_STATIC_filters2,LANG(LANG_G41)); // "Options & prefs :");
     SetDlgItemTextCP(this, IDC_STATIC_paths,LANG(LANG_G34)); // "Chemins");
-    //SetDlgItemTextCP(this, IDC_regdef,LANG(LANG_G37)); // "Sauver préfs");
+    //SetDlgItemTextCP(this, IDC_regdef,LANG(LANG_G37)); // "Sauver prï¿½fs");
     //SetDlgItemTextCP(this, IDOK,LANG(LANG_NEXT )); // "SUIVANT ->");
     //SetDlgItemTextCP(this, IDC_avant,LANG(LANG_BACK));
     //SetDlgItemTextCP(this, IDCANCEL,LANG(LANG_QUIT));  // exit 
-    //SetDlgItemTextCP(this, IDfilter,LANG(LANG_G39)); // "Définir..");
-    SetDlgItemTextCP(this, ID_setopt,LANG(LANG_G40)); // "Définir les options..");
+    //SetDlgItemTextCP(this, IDfilter,LANG(LANG_G39)); // "Dï¿½finir..");
+    SetDlgItemTextCP(this, ID_setopt,LANG(LANG_G40)); // "Dï¿½finir les options..");
     //SetDlgItemTextCP(this, IDC_mirtitle2,LANG(LANG_G42)); // "Nom du projet");
     SetDlgItemTextCP(this, IDC_login2,LANG_G43);
     //SetDlgItemTextCP(this, IDC_urls,LANG_G44);
@@ -221,8 +221,8 @@ BOOL Wid1::OnInitDialog( ) {
   }
   // fichier ini  
 
-  //OnChangepathlog();  // update répertoire log
-  //OnChangepthmir();  // update répertoire miroir
+  //OnChangepathlog();  // update rï¿½pertoire log
+  //OnChangepthmir();  // update rï¿½pertoire miroir
 
   return TRUE;
 }
@@ -271,13 +271,13 @@ void Wid1::CleanUrls()
       if ((tempo[i]==' ') || (tempo[i]==0)) {
         ch[j++]='\0';
         if ((strlen(ch)>0) && ((int) strlen(ch)<HTS_URLMAXSIZE) ) {
-          // vérifier URL
+          // vï¿½rifier URL
           /*
           char adr[HTS_URLMAXSIZE*2],fil[HTS_URLMAXSIZE*2];
           adr[0]=fil[0]='\0';
           if (ident_url_absolute(ch,adr,fil)==-1) {
             htsblk r;
-            char loc[HTS_URLMAXSIZE*2]; loc[0]='\0';    // éventuelle nouvelle position
+            char loc[HTS_URLMAXSIZE*2]; loc[0]='\0';    // ï¿½ventuelle nouvelle position
             r=http_test(ch,fil,loc);
             if (HTTP_IS_REDIRECT(r.statuscode)) {
               strcpybuff(ch,loc);
@@ -361,19 +361,19 @@ void Wid1::OnSelchangetodo()
     case 0:
       SetDlgItemTextCP(this, IDC_INFOMAIN,
       LANG(LANG_G2 /*"Mirror mode, fill the addresse(s) in the URL box.\x0d\x0aThe mirror will be saved in the location indicated below",
-      "Mode miroir, remplissez les addresse(s) dans la liste d'URLs.\x0d\x0aLe mirroir sera sauvé à l'emplacement indiqué plus bas"*/)
+      "Mode miroir, remplissez les addresse(s) dans la liste d'URLs.\x0d\x0aLe mirroir sera sauvï¿½ ï¿½ l'emplacement indiquï¿½ plus bas"*/)
       );
       break;
     case 1:
       SetDlgItemTextCP(this, IDC_INFOMAIN,
       LANG(LANG_G3 /* "Mirror mode with wizard (asks questions), fill the addresse(s) in the URL box.\x0d\x0aThe mirror will be saved in the location indicated below",
-      "Mode miroir semi automatique (pose des questions), remplissez les addresse(s) dans la liste d'URLs.\x0d\x0aLe mirroir sera sauvé à l'emplacement indiqué plus bas"*/)
+      "Mode miroir semi automatique (pose des questions), remplissez les addresse(s) dans la liste d'URLs.\x0d\x0aLe mirroir sera sauvï¿½ ï¿½ l'emplacement indiquï¿½ plus bas"*/)
       );
       break;
     case 2:
       SetDlgItemTextCP(this, IDC_INFOMAIN,
       LANG(LANG_G4 /* "Get files mode, fill the addresse(s) of the files in the URL box.\x0d\x0aThe mirror will be saved in the location indicated below",
-      "Mode téléchargement de fichier, remplissez les addresse(s) des fichiers dans la liste d'URLs.\x0d\x0aLe mirroir sera sauvé à l'emplacement indiqué plus bas"*/)
+      "Mode tï¿½lï¿½chargement de fichier, remplissez les addresse(s) des fichiers dans la liste d'URLs.\x0d\x0aLe mirroir sera sauvï¿½ ï¿½ l'emplacement indiquï¿½ plus bas"*/)
       );
       SetDlgItemTextCP(this, IDC_depth,"");
       break;
@@ -386,7 +386,7 @@ void Wid1::OnSelchangetodo()
     case 4:
       SetDlgItemTextCP(this, IDC_INFOMAIN,
       LANG(LANG_G5 /* "Test links mode, fill the addresse(s) of the pages containing links to test in the URL box.\x0d\x0aThe log report will be saved in the location indicated below",
-      "Mode test de liens, remplissez les adresse(s) des pages contenant les liens à tester dans la liste d'URLs.\x0d\x0aLes fichiers d'audit seront sauvés à l'emplacement indiqué plus bas"*/)
+      "Mode test de liens, remplissez les adresse(s) des pages contenant les liens ï¿½ tester dans la liste d'URLs.\x0d\x0aLes fichiers d'audit seront sauvï¿½s ï¿½ l'emplacement indiquï¿½ plus bas"*/)
       );
       SetDlgItemTextCP(this, IDC_depth,"");
       break;
@@ -394,12 +394,12 @@ void Wid1::OnSelchangetodo()
       if (r == LAST_ACTION )
         SetDlgItemTextCP(this, IDC_INFOMAIN,
         LANG(LANG_G6 /* "Update/Continue a mirror mode, check addresse(s) in the URL box, then click to the 'NEXT' button and check parameters.\x0d\x0aThe mirror will be saved in the location indicated below",
-        "Mode mise à jour/continuer un miroir, vérifiez les adresse(s) dans la liste d'URLs, puis cliquez sur le bouton 'NEXT' et vérifiez les paramètres.\x0d\x0aLe mirroir sera sauvé à l'emplacement indiqué plus bas"*/)
+        "Mode mise ï¿½ jour/continuer un miroir, vï¿½rifiez les adresse(s) dans la liste d'URLs, puis cliquez sur le bouton 'NEXT' et vï¿½rifiez les paramï¿½tres.\x0d\x0aLe mirroir sera sauvï¿½ ï¿½ l'emplacement indiquï¿½ plus bas"*/)
         );
       else if (r == LAST_ACTION-1 )
         SetDlgItemTextCP(this, IDC_INFOMAIN,
         LANG(LANG_G6b /* "Update/Continue a mirror mode, check addresse(s) in the URL box, then click to the 'NEXT' button and check parameters.\x0d\x0aThe mirror will be saved in the location indicated below",
-        "Mode mise à jour/continuer un miroir, vérifiez les adresse(s) dans la liste d'URLs, puis cliquez sur le bouton 'NEXT' et vérifiez les paramètres.\x0d\x0aLe mirroir sera sauvé à l'emplacement indiqué plus bas"*/)
+        "Mode mise ï¿½ jour/continuer un miroir, vï¿½rifiez les adresse(s) dans la liste d'URLs, puis cliquez sur le bouton 'NEXT' et vï¿½rifiez les paramï¿½tres.\x0d\x0aLe mirroir sera sauvï¿½ ï¿½ l'emplacement indiquï¿½ plus bas"*/)
         );
       break;
     }
@@ -426,8 +426,8 @@ void Wid1::AfterChangepathlog()
 
   strcpybuff(tempo,dialog0->GetPath());
   {
-    if (fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))) {    // un cache est présent
-      if (fsize(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))>0) {   // taille log contrôle>0
+    if (fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))) {    // un cache est prï¿½sent
+      if (fsize(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))>0) {   // taille log contrï¿½le>0
         int i;
         for(i=0;i<(int) strlen(tempo);i++)
           if (tempo[i]=='/')
@@ -447,7 +447,7 @@ void Wid1::AfterChangepathlog()
             ||
             (fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/new.dat")))
             && (fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/new.ndx")))
-            ) {  // il existe déja un cache précédent.. renommer
+            ) {  // il existe dï¿½ja un cache prï¿½cï¿½dent.. renommer
             if (modify) {
               if (
                 (!fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-in_progress.lock")))
@@ -531,18 +531,18 @@ char* Wid1::GetTip(int ID)
     case IDC_todo:  return LANG(LANG_G9); break; // "Choose an action","Choisissez une action"); break; 
     case IDC_depth: return LANG(LANG_G10); break; // "Maximum link depth to scan","Profondeur maximale"); break;
     case IDC_URL:   return LANG(LANG_G11); break; // "Enter addresses here","Entrez les adresses ici"); break;
-    //case IDC_urls:  return LANG(LANG_G12); break; // "Check spelling","Vérifier syntaxe"); break;
-    //case IDfilter:  return LANG(LANG_G13); break; // "Define additional filters","Définir les filtres supplémentaires"); break;
+    //case IDC_urls:  return LANG(LANG_G12); break; // "Check spelling","Vï¿½rifier syntaxe"); break;
+    //case IDfilter:  return LANG(LANG_G13); break; // "Define additional filters","Dï¿½finir les filtres supplï¿½mentaires"); break;
     //case IDC_pathlog:  return LANG(LANG_G16); break; // "Path","Chemin"); break;
     //case IDC_br2:      return LANG(LANG_G17); break; // "Select path","Choix du chemin"); break;
     //case IDC_pthmir:   return LANG(LANG_G18); break; // "Path","Chemin"); break;
     //case IDC_br1:      return LANG(LANG_G19); break; // "Select path","Choix du chemin"); break;
     case IDCANCEL:     return LANG(LANG_G20); break; // "Quit WinHTTrack","Quittter WinHTTrack"); break;
     case IDC_ipabout:  return LANG(LANG_G21); break; // "About WinHTTrack","A propos de WinHTTrack"); break;
-    case IDC_regdef:   return LANG(LANG_G22); break; // "Save preferences as default values","Sauver les réglages par défaut"); break;
+    case IDC_regdef:   return LANG(LANG_G22); break; // "Save preferences as default values","Sauver les rï¿½glages par dï¿½faut"); break;
     case IDOK:         return LANG(LANG_G23); break; // "Click to continue","Clic pour continuer"); break;
     case IDC_avant:     return LANG_TIPPREV; break;
-    case ID_setopt:    return LANG(LANG_G24); break; // "Click to define option","Clic pour définir les options"); break;
+    case ID_setopt:    return LANG(LANG_G24); break; // "Click to define option","Clic pour dï¿½finir les options"); break;
     case IDC_login2:   return LANG_G24b; break;
     case IDC_filelist: return LANG_G24c; break;
     //case : return ""; break;
@@ -563,12 +563,12 @@ void Wid1::OnDropFiles(HDROP hDropInfo)
   for(i=0;i<nf;i++) {
     char* buff;
     int size;
-    size=DragQueryFile(hDropInfo,i,NULL,0);    // taille buffer nécessaire
+    size=DragQueryFile(hDropInfo,i,NULL,0);    // taille buffer nï¿½cessaire
     if (size>0) {
-      size+=16;    // marge de sécurité
+      size+=16;    // marge de sï¿½curitï¿½
       buff=(char*) calloc(size,1);
       if (buff) {
-        if (DragQueryFile(hDropInfo,i,buff,size)>0) {    // ok copié
+        if (DragQueryFile(hDropInfo,i,buff,size)>0) {    // ok copiï¿½
           AfxMessageBox(buff,MB_OKCANCEL+MB_ICONQUESTION);
         }
         free(buff);
@@ -597,7 +597,7 @@ int Wid1::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 CString Wid1::TextToUrl(CString st,CLIPFORMAT cfFormat) {
   // yop
-  // on va convertir les chaines à la suite
+  // on va convertir les chaines ï¿½ la suite
   CString res;
   if (cfFormat==CF_TEXT) {
     char *buff, *last;
@@ -616,7 +616,7 @@ CString Wid1::TextToUrl(CString st,CLIPFORMAT cfFormat) {
   else if (cfFormat==CF_HDROP) {
     char* last = st.GetBuffer(0);
     int len = (int) strlen(last);
-    if (stricmp(last + len - 4, ".url") == 0) {
+    if (_stricmp(last + len - 4, ".url") == 0) {
       FILE* fp = fopen(last, "rb");
       if (fp != NULL) {
         char line[256];
@@ -686,7 +686,7 @@ BOOL Wid1::OnHelpInfo(HELPINFO* dummy)
 
 void Wid1::OnLoadprofile() {
   static char BASED_CODE szFilter[256];
-  strcpybuff(szFilter,LANG(LANG_G25 /*"WinHTTrack preferences (*.opt)|*.opt||","Réglages de WinHTTrack (*.opt)|*.opt||"*/));
+  strcpybuff(szFilter,LANG(LANG_G25 /*"WinHTTrack preferences (*.opt)|*.opt||","Rï¿½glages de WinHTTrack (*.opt)|*.opt||"*/));
   CFileDialog* dial = new CFileDialog(true,"opt",NULL,OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,szFilter);
   if (dial->DoModal() == IDOK) {
     CString st=dial->GetPathName();
@@ -702,7 +702,7 @@ void Wid1::OnLoadprofile() {
 
 void Wid1::OnSaveprofile() {
   static char BASED_CODE szFilter[256];
-  strcpybuff(szFilter,LANG(LANG_G25 /*"WinHTTrack preferences (*.opt)|*.opt||","Réglages de WinHTTrack (*.opt)|*.opt||"*/));
+  strcpybuff(szFilter,LANG(LANG_G25 /*"WinHTTrack preferences (*.opt)|*.opt||","Rï¿½glages de WinHTTrack (*.opt)|*.opt||"*/));
   CFileDialog* dial = new CFileDialog(false,"opt",NULL,OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,szFilter);
   if (dial->DoModal() == IDOK) {
     CString st=dial->GetPathName();
