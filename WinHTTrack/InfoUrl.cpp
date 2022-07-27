@@ -4,13 +4,17 @@
 #include "stdafx.h"
 
 /* Externe C */
-#include <WS2tcpip.h>  // Note: weird C2894 error if not included here
+//#include <WS2tcpip.h>  // Note: weird C2894 error if not included here
+#include "HTTrackInterface.h"
+#include "htscore.h"
 extern "C" {
-  #include "HTTrackInterface.h"
-  #include "htscore.h"
-}
 
+
+	#include "htsglobal.h"
+
+}
 #include "Shell.h"
+
 #include "InfoUrl.h"
 #include "NewLang.h"
 
@@ -66,8 +70,8 @@ BOOL CInfoUrl::OnInitDialog()
   SetIcon(httrack_icon,true);  
   SetForegroundWindow();   // yop en premier plan!
 
-  // Patcher l'interface pour les Français ;-)
-  if (LANG_T(-1)) {    // Patcher en français
+  // Patcher l'interface pour les Franï¿½ais ;-)
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     SetWindowTextCP(this, LANG_X1);
     SetDlgItemTextCP(this, IDC_Freeze,LANG_X2);
     SetDlgItemTextCP(this, IDC_STATIC_moreinfos,LANG_X3);
@@ -181,7 +185,7 @@ void CInfoUrl::OnTimer(UINT_PTR nIDEvent)
     char total[256]; total[0]='\0';
     char info100[256]; info100[0]='\0';
     int offset=0;
-    if (back[id].status != -1) {        // utilisé
+    if (back[id].status != -1) {        // utilisï¿½
       if (back[id].r.totalsize>0) {
         sprintf(total,LLintP,(LLint)back[id].r.totalsize);
         offset=(int) ((LONGLONG) ((LONGLONG) back[id].r.size*(LONGLONG) 100)/((LONGLONG) back[id].r.totalsize));
@@ -190,14 +194,14 @@ void CInfoUrl::OnTimer(UINT_PTR nIDEvent)
         sprintf(total,"unknown");
         sprintf(info100,"");
       }
-      sprintf(info,"File: %s\r\nTotal length: %s\r\nBytes downloaded: "LLintP" %s\r\nCurrent state: %s",back[id].url_sav,total,back[id].r.size,info100,ToStatus(back[id].status));
+      sprintf(info,"File: %s\r\nTotal length: %s\r\nBytes downloaded: %I64d %s\r\nCurrent state: %s",back[id].url_sav,total,back[id].r.size,info100,ToStatus(back[id].status));
     }
     //
     if (strcmp(old_info,info)) {
       char moreinfo[8192]; moreinfo[0]='\0';
       lien_back* backitem=&back[id];
       if (backitem) {
-        if (back[id].status != -1) {        // utilisé
+        if (back[id].status != -1) {        // utilisï¿½
           sprintf(moreinfo+strlen(moreinfo),"Host: %s\r\n",backitem->url_adr);
           sprintf(moreinfo+strlen(moreinfo),"File: %s\r\n",backitem->url_fil);
           sprintf(moreinfo+strlen(moreinfo),"Name: %s\r\n",backitem->url_sav);
@@ -215,7 +219,7 @@ void CInfoUrl::OnTimer(UINT_PTR nIDEvent)
             sprintf(moreinfo+strlen(moreinfo),"HTTP/1.1: %s\r\n",ToBool(backitem->r.req.http11));
             sprintf(moreinfo+strlen(moreinfo),"ChunkMode: %s\r\n",ToBool(backitem->r.is_chunk));
             if (backitem->is_chunk)
-              sprintf(moreinfo+strlen(moreinfo),"CurrentChunkSize: "LLintP"\r\n",backitem->chunk_size);
+              sprintf(moreinfo+strlen(moreinfo),"CurrentChunkSize: %I64d\r\n",backitem->chunk_size);
             //
             sprintf(moreinfo+strlen(moreinfo),"TestMode: %s\r\n",ToBool(backitem->testmode));
             sprintf(moreinfo+strlen(moreinfo),"HeadRequest: %s\r\n",ToBool(backitem->head_request));
@@ -224,8 +228,8 @@ void CInfoUrl::OnTimer(UINT_PTR nIDEvent)
             sprintf(moreinfo+strlen(moreinfo),"WriteToDisk: %s\r\n",ToBool(backitem->r.is_write));
             sprintf(moreinfo+strlen(moreinfo),"LocalFile: %s\r\n",ToBool(backitem->r.is_file));
             //
-            sprintf(moreinfo+strlen(moreinfo),"Size: "LLintP"\r\n",backitem->r.size);
-            sprintf(moreinfo+strlen(moreinfo),"TotalSize: "LLintP"\r\n",backitem->r.totalsize);
+            sprintf(moreinfo+strlen(moreinfo),"Size: %I64d\r\n",backitem->r.size);
+            sprintf(moreinfo+strlen(moreinfo),"TotalSize: %I64d\r\n",backitem->r.totalsize);
         } else
           strcpybuff(moreinfo,"Transfer complete in this buffer, waiting for next file");
       }

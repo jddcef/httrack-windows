@@ -234,6 +234,7 @@
     <None Include="res\www.cur">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="about.cpp">
@@ -278,9 +279,6 @@
     <ClCompile Include="HTMLHelp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\httrack\src\htsmd5.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HTTrackInterface.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -306,9 +304,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainTab.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\httrack\src\md5.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MemRegister.cpp">
@@ -404,10 +399,19 @@
     <ClCompile Include="XSHBrowseForFolder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\httrack\src\htsmd5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\httrack\src\md5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WinHTTrack.rc">
       <Filter>Source Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="$(ZLibDir)lib\$(Platform)\$(Configuration)\$(ZLibName).lib" />
   </ItemGroup>
 </Project>

@@ -7,9 +7,9 @@
 // InsertUrl.h : header file
 //
 
-// Attention, définition existante également dans htslib.h
-// (à modifier avec celle-ci)
-#define POSTTOK "?>post"
+// Attention, dï¿½finition existante ï¿½galement dans htslib.h
+// (ï¿½ modifier avec celle-ci)
+
 
 /* Externe C */
 extern "C" {

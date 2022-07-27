@@ -76,7 +76,7 @@ BOOL CInsertUrl::OnInitDialog()
   EnableToolTips(true);     // TOOL TIPS
   SetForegroundWindow();   // yop en premier plan!
 	
-  if (LANG_T(-1)) {    // Patcher en français
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     SetWindowTextCP(this,  LANG(LANG_T1));
     SetDlgItemTextCP(this, IDC_STATIC_adr,LANG(LANG_T2));
     SetDlgItemTextCP(this, IDC_STATIC_auth,LANG(LANG_T4));
@@ -186,7 +186,7 @@ UINT RunBackCatchServer( LPVOID pP ) {
       {
         char finalurl[HTS_URLMAXSIZE*2];
         inplace_escape_check_url(dest, sizeof(dest));
-        sprintf(finalurl,"%s"POSTTOK"file:%s",url,dest);
+        sprintf(finalurl,"%s?>postfile:%s",url,dest);
         SetDlgItemTextCP(_this, IDC_urladr,finalurl);
       }
     }
@@ -212,7 +212,7 @@ UINT RunBackCatchServer( LPVOID pP ) {
 
 void CInsertUrl::Oncapt() 
 {
-  // Demander un port d'écoute
+  // Demander un port d'ï¿½coute
   adr_prox[0]='\0';
   port_prox=0;
   soc=catch_url_init_std(&port_prox,adr_prox);

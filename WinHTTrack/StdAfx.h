@@ -9,12 +9,12 @@
 // #define NTDDI_VERSION 0x05000000 // NTDDI_WIN2K
 
 #ifndef WINVER
-#define WINVER       0x0500 // _WIN32_WINNT_WIN2K
+#define WINVER       _WIN32_WINNT_WIN10 // win10
 //#define WINVER       0x0400 // _WIN32_WINNT_NT4
 #endif
 
 #ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0500 // _WIN32_WINNT_WIN2K
+#define _WIN32_WINNT _WIN32_WINNT_WIN10 // win10
 //#define _WIN32_WINNT 0x0400 // _WIN32_WINNT_NT4
 #endif
 
