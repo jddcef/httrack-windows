@@ -642,7 +642,7 @@ void CWinHTTrackApp::OnFileDelete()
       int pos=st.ReverseFind('.');
       CString dir=st.Left(pos)+"\\";
       char msg[1000];
-      sprintf(msg,"%s\r\n%s",LANG_DELETECONF,dir);
+      sprintf(msg,"%s\r\n%s",LANG_DELETECONF,dir.GetString());
       if (AfxMessageBox(msg,MB_OKCANCEL)==IDOK) {
         if (remove(st)) {
           AfxMessageBox("Error deleting "+st);
