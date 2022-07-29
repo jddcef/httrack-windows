@@ -29,7 +29,7 @@
 #include "stdafx.h"
 #include "shlobj.h"
 #include "XSHBrowseForFolder.h"
-
+#include "WinPosixFixes.h"
 // our button ID
 int XSHBFF_button1 = -1;
 
@@ -113,7 +113,7 @@ LRESULT __stdcall XSHBFF_WndProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam
           if (st[strlen(st)-1]=='\\')
             st[strlen(st)-1]='\0';
           // create dir
-          if (_mkdir(st))              // error
+          if (mkdir(st))              // error
             AfxMessageBox("Folder already exists, or can not be created",MB_OK+MB_ICONEXCLAMATION);
           else {    // Select the new path
             if (DirectReturnValue) {

@@ -55,6 +55,7 @@ static char THIS_FILE[] = __FILE__;
 #include "wizard.h"
 #include "wizard2.h"
 #include "WizLinks.h"
+#include "WinPosixFixes.h"
 extern char WIZ_question[1000];
 extern char WIZ_reponse[1000];
 
@@ -698,7 +699,11 @@ BOOL CWinHTTrackApp::RmDir(CString srcpath) {
     } while(FindNextFile(h,&find));
     FindClose(h);
   }
+#pragma warning(push)
+#pragma warning(disable: 4996)//0 idea why please don't use _rmdir use _rmdir??
   if (_rmdir(srcpath)) {
+#pragma warning(pop)
+
     AfxMessageBox("Error deleting "+srcpath);
     return FALSE;
   }

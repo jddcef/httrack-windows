@@ -82,7 +82,7 @@ extern "C" {
 extern "C" {
   #include "htswrap.h"
 };
-
+#include "WinPosixFixes.h"
 // --- --- --- --- Options --- --- --- ---
 
 #define MAX_LEN_INPROGRESS 32

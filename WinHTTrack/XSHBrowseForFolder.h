@@ -9,7 +9,7 @@
 // Freeware, but no warranty!
 //
 // #include "NewFolder.h"             for Input dialog (new folder)
-// #include <direct.h>                for _mkdir
+// #include <direct.h>                for mkdir
 // ----------------------------------------------------------------------
 
 #if !defined(__XSHBrowseForFolder_routines)
