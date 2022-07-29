@@ -55,7 +55,7 @@ static char THIS_FILE[] = __FILE__;
 #include "wizard.h"
 #include "wizard2.h"
 #include "WizLinks.h"
-#include "WinPosixFixes.h"
+#include "PlatformFixes.h"
 extern char WIZ_question[1000];
 extern char WIZ_reponse[1000];
 

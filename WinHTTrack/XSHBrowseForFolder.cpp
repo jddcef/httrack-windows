@@ -29,7 +29,7 @@
 #include "stdafx.h"
 #include "shlobj.h"
 #include "XSHBrowseForFolder.h"
-#include "WinPosixFixes.h"
+#include "PlatformFixes.h"
 // our button ID
 int XSHBFF_button1 = -1;
 

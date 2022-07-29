@@ -6,7 +6,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinHTTrack", "WinHTTrack\Wi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libhttrack", "httrack\src\libhttrack.vcxproj", "{E76AD871-54C1-45E8-A657-6117ADEFFB46}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "httrack", "httrack\src\httrack\httrack.vcxproj", "{D0E894E7-F64C-4722-9807-9ABB1054D43A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "httrack", "httrack\src\httrack\httrack-cli.vcxproj", "{D0E894E7-F64C-4722-9807-9ABB1054D43A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "webhttrack", "httrack\src\web\webhttrack.vcxproj", "{B2A68D1B-3EB3-4B16-B634-8D36AC4266EC}"
 EndProject
