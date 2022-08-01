@@ -43,6 +43,7 @@ COptionTab10::COptionTab10() : CPropertyPage(COptionTab10::IDD)
 	m_proxy = _T("");
 	m_port = _T("");
 	m_ftpprox = FALSE;
+	m_sslproxy = TRUE;
 	//}}AFX_DATA_INIT
 }
 
@@ -57,11 +58,13 @@ void COptionTab10::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_prox, m_ctl_prox);
 	DDX_Control(pDX, IDC_PWDHIDE, m_ctl_pwdhide);
 	DDX_Control(pDX, IDC_ftpprox, m_ctl_ftpprox);
+	DDX_Control(pDX, IDC_sslproxy, m_ctl_sslproxy);
 	DDX_Control(pDX, IDC_portprox, m_ctl_portprox);
 	DDX_Control(pDX, IDC_proxtitle, m_ctl_proxtitle);
 	DDX_Text(pDX, IDC_prox, m_proxy);
 	DDX_Text(pDX, IDC_portprox, m_port);
 	DDX_Check(pDX, IDC_ftpprox, m_ftpprox);
+	DDX_Check(pDX, IDC_sslproxy, m_sslproxy);
 	//}}AFX_DATA_MAP
 }
 
@@ -122,12 +125,14 @@ BOOL COptionTab10::OnInitDialog()
     GetDlgItem(IDC_proxyconfigure ) ->ModifyStyle(0,WS_DISABLED);
     GetDlgItem(IDC_proxtitle      ) ->ModifyStyle(0,WS_DISABLED);
     GetDlgItem(IDC_ftpprox        ) ->ModifyStyle(0,WS_DISABLED);
+	GetDlgItem(IDC_sslproxy		  )->ModifyStyle(0, WS_DISABLED);
   } else {
     GetDlgItem(IDC_prox           ) ->ModifyStyle(WS_DISABLED,0);
     GetDlgItem(IDC_portprox       ) ->ModifyStyle(WS_DISABLED,0);
     GetDlgItem(IDC_proxyconfigure ) ->ModifyStyle(WS_DISABLED,0);
     GetDlgItem(IDC_proxtitle      ) ->ModifyStyle(WS_DISABLED,0);
     GetDlgItem(IDC_ftpprox        ) ->ModifyStyle(WS_DISABLED,0);
+	GetDlgItem(IDC_sslproxy        ) ->ModifyStyle(WS_DISABLED,0);
   }
 
   CString str;

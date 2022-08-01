@@ -19,7 +19,7 @@ IMPLEMENT_DYNCREATE(COptionTab8, CPropertyPage)
 COptionTab8::COptionTab8() : CPropertyPage(COptionTab8::IDD)
 {
   // Patcher titre
-  if (LANG_T(-1)) {    // Patcher en français
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     m_psp.pszTitle=LANG(LANG_IOPT8); // titre
     m_psp.dwFlags|=PSP_USETITLE;
   }
@@ -27,7 +27,7 @@ COptionTab8::COptionTab8() : CPropertyPage(COptionTab8::IDD)
   //
 	//{{AFX_DATA_INIT(COptionTab8)
 	m_checktype = -1;
-	m_cookies = FALSE;
+	m_cookies = 0;
 	m_parsejava = FALSE;
 	m_robots = -1;
 	m_http10 = FALSE;
@@ -46,7 +46,7 @@ void COptionTab8::DoDataExchange(CDataExchange* pDX)
 	CPropertyPage::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(COptionTab8)
 	DDX_CBIndex(pDX, IDC_checktype, m_checktype);
-	DDX_Check(pDX, IDC_cookies, m_cookies);
+	DDX_CBIndex(pDX, IDC_cookies, m_cookies);
 	DDX_Check(pDX, IDC_parsejava, m_parsejava);
 	DDX_CBIndex(pDX, IDC_robots, m_robots);
 	DDX_Check(pDX, IDC_http10, m_http10);
@@ -70,7 +70,7 @@ BOOL COptionTab8::OnInitDialog()
 	CDialog::OnInitDialog();
   EnableToolTips(true);     // TOOL TIPS
 
-  // mode modif à la volée
+  // mode modif ï¿½ la volï¿½e
   if (modify==1) {
     GetDlgItem(IDC_cookies)          ->ModifyStyle(0,WS_DISABLED);
     GetDlgItem(IDC_checktype)        ->ModifyStyle(0,WS_DISABLED);
@@ -95,7 +95,7 @@ BOOL COptionTab8::OnInitDialog()
     GetDlgItem(IDC_STATIC_spider)    ->ModifyStyle(WS_DISABLED,0);
   }
 
-  if (LANG_T(-1)) {    // Patcher en français
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     SetDlgItemTextCP(this, IDC_robots,LANG(LANG_I55));
     SetDlgItemTextCP(this, IDC_cookies,LANG(LANG_I58));
     SetDlgItemTextCP(this, IDC_STATIC_checktype,LANG(LANG_I59));

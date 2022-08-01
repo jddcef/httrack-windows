@@ -49,7 +49,7 @@ extern Wid1* dialog1;
 /* shellapp */
 extern CShellApp* CShellApp_app;
 
-/* création structure */
+/* crï¿½ation structure */
 extern "C" HTSEXT_API int structcheck(const char* s);
 
 
@@ -161,7 +161,7 @@ LRESULT CNewProj::OnWizardNext() {
   st.TrimLeft();
   st.TrimRight();
   strcpybuff(tempo,st);
-  // caractères interdits
+  // caractï¿½res interdits
   {
     int i;
     char* a=NULL;
@@ -173,7 +173,7 @@ LRESULT CNewProj::OnWizardNext() {
   //while(a=strchr(tempo,' ')) *a='_';      // PAS de _
   SetDlgItemTextCP(this, IDC_projname,tempo);
 
-  // Modifié et sauvable
+  // Modifiï¿½ et sauvable
   GetDlgItemText(IDC_projpath,stp);
   if (stp.GetLength() > MAX_PATH) {
     return -1;
@@ -233,8 +233,8 @@ BOOL CNewProj::OnInitDialog()
   // disabled
   OnChangeprojname();
 
-  // Patcher l'interface pour les Français ;-)
-  if (LANG_T(-1)) {    // Patcher en français
+  // Patcher l'interface pour les Franï¿½ais ;-)
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     SetWindowTextCP(this,  LANG(LANG_S10));
     // SetDlgItemTextCP(this, IDOK,LANG(LANG_NEXT )); // "SUIVANT ->");
     // SetDlgItemTextCP(this, IDCANCEL,LANG(LANG_QUIT));  // exit 
@@ -449,8 +449,8 @@ void CNewProj::Changeprojname(CString stl) {
       strcatbuff(tempo,"/");
       strcatbuff(tempo,stl);
       strcatbuff(tempo,"/");
-      if (fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))     // un cache est présent
-        && fsize(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))>0) {   // taille log contrôle>0
+      if (fexist(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))     // un cache est prï¿½sent
+        && fsize(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"))>0) {   // taille log contrï¿½le>0
         CString strSection       = "OptionsValues";
         CString st  = MyGetProfileString(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"),strSection,"CurrentUrl");
         CString st2 = MyGetProfileString(fconcat(catbuff,sizeof(catbuff),tempo,"hts-cache/winprofile.ini"),strSection,"Category");
@@ -593,7 +593,7 @@ BOOL CNewProj::OnKillActive( ) {
 
   UpdateData(TRUE);         // DoDataExchange
 
-  // créer structure
+  // crï¿½er structure
   {
     char dest[HTS_URLMAXSIZE*2];
     int i=0;
@@ -620,7 +620,7 @@ BOOL CNewProj::OnKillActive( ) {
   //a.Format("t=%dms", (int)l_dir);
   //(void) AfxMessageBox(a, MB_OK);
 
-  // charger préfs
+  // charger prï¿½fs
   dialog1->OnChangepathlog();
 
   return 1;

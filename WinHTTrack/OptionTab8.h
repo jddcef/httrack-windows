@@ -25,7 +25,7 @@ public:
 	//{{AFX_DATA(COptionTab8)
 	enum { IDD = IDD_OPTION8 };
 	int		m_checktype;
-	BOOL	m_cookies;
+	int		m_cookies;
 	BOOL	m_parsejava;
 	int		m_robots;
 	BOOL	m_http10;

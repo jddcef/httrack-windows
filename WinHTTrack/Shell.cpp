@@ -588,10 +588,15 @@ void compute_options() {
   // proxy
   ShellOptions->proxy = maintab->m_option10.m_proxy;
   ShellOptions->port = maintab->m_option10.m_port;
-  if (maintab->m_option10.m_ftpprox) 
-    ShellOptions->proxyftp = "%f";
+  if (maintab->m_option10.m_ftpprox)
+	  ShellOptions->proxyftp = "%f";
   else
-    ShellOptions->proxyftp = "%f0";   
+	  ShellOptions->proxyftp = "%f0";
+
+  if (maintab->m_option10.m_sslproxy)
+	  ShellOptions->proxyhttps = "%C";
+  else
+	  ShellOptions->proxyhttps = "%C0";
   
   //depth
   ShellOptions->depth = maintab->m_option5.m_depth;
@@ -622,7 +627,9 @@ void compute_options() {
   else if(maintab->m_option8.m_robots==2) ShellOptions->robots = "s2"; 
   
   // cookies,checktype,parsejava
-  if(maintab->m_option8.m_cookies==0) ShellOptions->cookies = "b0"; // else ShellOptions->cookies = "b1";
+  if(maintab->m_option8.m_cookies==0) ShellOptions->cookies = "b0";
+  if (maintab->m_option8.m_cookies == 1) ShellOptions->cookies = "b1";
+  if (maintab->m_option8.m_cookies == 2) ShellOptions->cookies = "b2";
   if (maintab->m_option8.m_checktype>=0)
     ShellOptions->checktype.Format("u%d",maintab->m_option8.m_checktype);
   if(maintab->m_option8.m_parsejava==0) ShellOptions->parsejava = "j0"; // else ShellOptions->cookies = "j1";
@@ -1933,7 +1940,8 @@ void lance(void) {
   single += ShellOptions->maxrate;
   single += ShellOptions->maxconn;
   single += ShellOptions->maxlinks;
-  single += ShellOptions->proxyftp;  
+  single += ShellOptions->proxyftp;
+  single += ShellOptions->proxyhttps;
   single += "#f";  // flush
   
   if (ShellOptions->user.GetLength() != 0) {
@@ -2480,6 +2488,7 @@ void Write_profile(CString path,int load_path) {
     MyWriteProfileInt(path,strSection, "StoreAllInCache",maintab->m_option9.m_Cache2);
     MyWriteProfileInt(path,strSection, "LogType",maintab->m_option9.m_logtype);
     MyWriteProfileInt(path,strSection, "UseHTTPProxyForFTP",maintab->m_option10.m_ftpprox);
+	MyWriteProfileInt(path, strSection, "UseHTTPProxyForHTTPS", maintab->m_option10.m_ftpprox);
     
     // menus
     MyWriteProfileInt(path,strSection, "Build",maintab->m_option2.m_build);
@@ -2839,6 +2848,7 @@ void Read_profile(CString path,int load_path) {
   maintab->m_option10.m_proxy   = MyGetProfileString(path,strSection, "Proxy");
   maintab->m_option10.m_port    = MyGetProfileString(path,strSection, "Port");
   maintab->m_option10.m_ftpprox = MyGetProfileInt(path,strSection, "UseHTTPProxyForFTP",1);
+  maintab->m_option10.m_ftpprox = MyGetProfileInt(path, strSection, "UseHTTPProxyForHTTPS", 1);
   //
   maintab->m_option5.m_depth    = MyGetProfileString(path,strSection, "Depth");
   maintab->m_option5.m_depth2   = MyGetProfileString(path,strSection, "ExtDepth");

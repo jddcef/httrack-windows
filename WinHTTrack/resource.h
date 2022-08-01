@@ -128,6 +128,7 @@
 #define IDC_link                        1022
 #define IDC_ch4                         1022
 #define IDC_rasshut                     1022
+#define IDC_sslproxy                    1022
 #define IDC_CHECK3                      1023
 #define IDC_Wizard                      1023
 #define IDC_pthmir                      1023
@@ -461,6 +462,7 @@
 #define IDC_toler                       1241
 #define IDC_updhack                     1242
 #define IDC_urlhack                     1243
+#define IDC_STATIC_cookies              1244
 #define IDC_STATIC_checktype            1245
 #define IDC_HTMLVIEW                    1247
 #define IDC_textwait                    1255
@@ -575,7 +577,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        247
+#define _APS_NEXT_RESOURCE_VALUE        249
 #define _APS_NEXT_COMMAND_VALUE         32837
 #define _APS_NEXT_CONTROL_VALUE         1309
 #define _APS_NEXT_SYMED_VALUE           108

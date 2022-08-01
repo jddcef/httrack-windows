@@ -30,11 +30,13 @@ public:
 	CComboBox	m_ctl_prox;
 	CButton	m_ctl_pwdhide;
 	CButton	m_ctl_ftpprox;
+	CButton	m_ctl_sslproxy;
 	CEdit	m_ctl_portprox;
 	CStatic	m_ctl_proxtitle;
 	CString	m_proxy;
 	CString	m_port;
 	BOOL	m_ftpprox;
+	BOOL	m_sslproxy;
 	//}}AFX_DATA
 
 

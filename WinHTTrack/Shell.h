@@ -16,7 +16,7 @@
 #include "htsdefines.h"
 
 //
-// connecté via HTTrack? (défini dans projet)
+// connectï¿½ via HTTrack? (dï¿½fini dans projet)
 #define USE_RAS 1
 //
 
@@ -143,7 +143,7 @@ void Build_TopIndex(BOOL check_empty=TRUE);
 
 void InitRAS();
 
-// Gestion répertoires
+// Gestion rï¿½pertoires
 int CheckDirInfo(CString path);
 BOOL RemoveEmptyDir(CString path);
 
@@ -181,7 +181,7 @@ BOOL LaunchMirror();
 /* Class */
 class CShellOptions {
 public:
-  CString url, filelist, proxy, proxyftp, port, depth, 
+  CString url, filelist, proxy, proxyftp, port, depth, proxyhttps,
     extdepth, get, where, meth, maxfile, max, frag, 
     conn, tog, cache, robots, choixdeb, build, filtre, htmlfirst, 
     index, index2, index_mail, dos, time, rate, hostquit, ka, 

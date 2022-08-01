@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -29,14 +27,23 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\Shell.ico"
+
 IDR_WINHTTTYPE          ICON                    "res\\Shell.ico"
+
 IDI_BACK                ICON                    "res\\icon1.ico"
+
 IDI_FORWARD             ICON                    "res\\icon2.ico"
+
 IDI_STOP                ICON                    "res\\icon3.ico"
+
 IDI_RELOAD              ICON                    "res\\icon4.ico"
+
 IDI_HOME                ICON                    "res\\icon5.ico"
+
 IDI_PRINT               ICON                    "res\\icon6.ico"
+
 IDR_HELPFRM             ICON                    "res\\idr_main.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -44,14 +51,16 @@ IDR_HELPFRM             ICON                    "res\\idr_main.ico"
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDR_HELPFRM             BITMAP                  "res\\mainfram.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR  16, 15
+IDR_MAINFRAME TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_FILE_OPEN
@@ -61,7 +70,7 @@ BEGIN
     BUTTON      ID_APP_ABOUT
 END
 
-IDR_HELPFRM TOOLBAR  16, 15
+IDR_HELPFRM TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_FILE_OPEN
@@ -77,7 +86,7 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENU 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -132,7 +141,7 @@ BEGIN
     END
 END
 
-IDR_POPUP MENU 
+IDR_POPUP MENU
 BEGIN
     POPUP ""
     BEGIN
@@ -154,7 +163,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
     "L",            ID_LoadDefaultOptions,  VIRTKEY, CONTROL, NOINVERT
@@ -219,7 +228,7 @@ BEGIN
                     "Button",BS_AUTORADIOBUTTON | BS_MULTILINE,12,174,233,20
 END
 
-IDD_wizard DIALOG  0, 0, 190, 98
+IDD_wizard DIALOG 0, 0, 190, 98
 STYLE DS_SETFONT | WS_CAPTION | WS_SYSMENU
 CAPTION "Wizard query"
 FONT 8, "MS Sans Serif"
@@ -230,7 +239,7 @@ BEGIN
     LTEXT           "",IDC_question,7,7,176,47
 END
 
-IDD_inprogress DIALOG  0, 0, 361, 267
+IDD_inprogress DIALOG 0, 0, 361, 267
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -327,7 +336,7 @@ BEGIN
     LTEXT           "",IDC_nn13,155,247,80,8,SS_NOTIFY
 END
 
-IDD_wizard_yn DIALOG  0, 0, 197, 106
+IDD_wizard_yn DIALOG 0, 0, 197, 106
 STYLE DS_SETFONT | WS_CAPTION | WS_SYSMENU
 CAPTION "Wizard query"
 FONT 8, "MS Sans Serif"
@@ -337,7 +346,7 @@ BEGIN
     LTEXT           "",IDC_question,7,7,183,72
 END
 
-IDD_wizard_lnk DIALOG  0, 0, 218, 118
+IDD_wizard_lnk DIALOG 0, 0, 218, 118
 STYLE DS_SETFONT | WS_CAPTION | WS_SYSMENU
 CAPTION "Link detected.."
 FONT 8, "MS Sans Serif"
@@ -354,7 +363,7 @@ BEGIN
     LTEXT           "",IDC_URL,20,7,190,17
 END
 
-IDD_ABOUT DIALOG  0, 0, 235, 204
+IDD_ABOUT DIALOG 0, 0, 235, 204
 STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About WinHTTrack Website Copier"
 FONT 8, "MS Sans Serif"
@@ -366,7 +375,7 @@ BEGIN
     DEFPUSHBUTTON   "OK",IDOK,178,182,50,14,WS_GROUP
 END
 
-IDD_AddFilter DIALOG  0, 0, 230, 150
+IDD_AddFilter DIALOG 0, 0, 230, 150
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Add Scan Rule"
 FONT 8, "MS Sans Serif"
@@ -381,7 +390,7 @@ BEGIN
     LTEXT           "",IDC_EDIT2,7,71,216,46
 END
 
-IDD_iplog DIALOG  0, 0, 426, 178
+IDD_iplog DIALOG 0, 0, 426, 178
 STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
 CAPTION "Log files"
 FONT 8, "MS Sans Serif"
@@ -393,7 +402,7 @@ BEGIN
     DEFPUSHBUTTON   "Find",IDC_FIND,371,7,49,14
 END
 
-IDD_NewFolder DIALOG  0, 0, 237, 46
+IDD_NewFolder DIALOG 0, 0, 237, 46
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Create New Folder"
 FONT 8, "MS Sans Serif"
@@ -403,7 +412,7 @@ BEGIN
     PUSHBUTTON      "Cancel",IDCANCEL,180,24,50,14
 END
 
-IDD_fin DIALOG  0, 0, 321, 195
+IDD_fin DIALOG 0, 0, 321, 195
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -412,7 +421,7 @@ BEGIN
     LTEXT           "",IDC_infoend,7,7,307,130
 END
 
-IDD_BuildOptions DIALOG  0, 0, 246, 183
+IDD_BuildOptions DIALOG 0, 0, 246, 183
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "User-defined structure"
 FONT 8, "MS Sans Serif"
@@ -425,7 +434,7 @@ BEGIN
     EDITTEXT        IDC_STATIC_bo1,7,43,232,84,ES_MULTILINE | ES_READONLY | NOT WS_BORDER
 END
 
-IDD_ProxyId DIALOG  0, 0, 266, 129
+IDD_ProxyId DIALOG 0, 0, 266, 129
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Proxy settings"
 FONT 8, "MS Sans Serif"
@@ -443,7 +452,7 @@ BEGIN
     GROUPBOX        "Authentication (only if needed)",IDC_STATIC_auth,8,40,248,48
 END
 
-IDD_NewProj DIALOG  0, 0, 322, 181
+IDD_NewProj DIALOG 0, 0, 322, 181
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -460,7 +469,7 @@ BEGIN
     PUSHBUTTON      "Batch update...",IDC_mupdate,232,160,83,14,NOT WS_VISIBLE
 END
 
-IDD_InsertUrl DIALOG  0, 0, 266, 142
+IDD_InsertUrl DIALOG 0, 0, 266, 142
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Insert URL"
 FONT 8, "MS Sans Serif"
@@ -479,7 +488,7 @@ BEGIN
     LTEXT           "Forms or complex links:",IDC_STATIC_capt,7,85,153,10
 END
 
-IDD_OPTION3 DIALOG  0, 0, 324, 141
+IDD_OPTION3 DIALOG 0, 0, 324, 141
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "Experts Only"
 FONT 8, "MS Sans Serif"
@@ -569,7 +578,7 @@ BEGIN
     EDITTEXT        IDC_accept_language,115,54,180,12,ES_AUTOHSCROLL
 END
 
-IDD_OPTION1 DIALOG  0, 0, 325, 105
+IDD_OPTION1 DIALOG 0, 0, 325, 105
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "Links"
 FONT 8, "MS Sans Serif"
@@ -583,7 +592,7 @@ BEGIN
     CONTROL         "Get HTML files first!",IDC_htmlfirst,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,85,309,10
 END
 
-IDD_OPTION2 DIALOG  0, 0, 296, 150
+IDD_OPTION2 DIALOG 0, 0, 296, 150
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "Build"
 FONT 8, "MS Sans Serif"
@@ -600,7 +609,7 @@ BEGIN
     CONTROL         "Do not purge old files",IDC_nopurge,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,135,269,9
 END
 
-IDD_OPTION7 DIALOG  0, 0, 315, 197
+IDD_OPTION7 DIALOG 0, 0, 315, 197
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "Scan Rules"
 FONT 8, "MS Sans Serif"
@@ -620,7 +629,6 @@ STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "Spider"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
-    CONTROL         "Accept cookies",IDC_cookies,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,16,244,9
     LTEXT           "Check document type",IDC_STATIC_checktype,16,32,117,8
     COMBOBOX        IDC_checktype,144,32,116,56,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
     CONTROL         "Parse java files",IDC_parsejava,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,48,235,9
@@ -630,6 +638,8 @@ BEGIN
     CONTROL         "URL hacks (join similar URLs)",IDC_urlhack,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,95,237,9
     CONTROL         "Tolerant requests (for servers)",IDC_toler,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,110,244,9
     CONTROL         "Force old HTTP/1.0 requests (no 1.1)",IDC_http10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,125,237,9
+    LTEXT           "Save Cookies",IDC_STATIC_cookies,16,16,117,8
+    COMBOBOX        IDC_cookies,144,16,116,56,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
 END
 
 IDD_OPTION9 DIALOGEX 0, 0, 325, 143
@@ -647,10 +657,10 @@ BEGIN
     CONTROL         "Build a mail archive",IDC_index_mail,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,112,306,9
 END
 
-IDD_OPTION10 DIALOG  0, 0, 309, 61
+IDD_OPTION10 DIALOGEX 0, 0, 309, 61
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "Proxy"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     LTEXT           "Proxy:",IDC_proxtitle,16,16,39,10
     COMBOBOX        IDC_prox,58,16,157,89,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
@@ -659,6 +669,7 @@ BEGIN
     PUSHBUTTON      "Configure",IDC_proxyconfigure,256,16,49,11
     CONTROL         "Use proxy for ftp transfers",IDC_ftpprox,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,35,157,10
     CONTROL         "Hide password",IDC_PWDHIDE,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | BS_RIGHT | WS_TABSTOP,177,35,128,10
+    CONTROL         "Use proxy for https/ssl",IDC_sslproxy,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,45,157,10
 END
 
 IDD_HtmlHelp DIALOGEX 0, 0, 381, 282
@@ -675,7 +686,7 @@ BEGIN
     ICON            IDI_PRINT,ID_FILE_PRINT,100,0,20,20,SS_NOTIFY | SS_CENTERIMAGE | SS_REALSIZEIMAGE,WS_EX_DLGMODALFRAME
 END
 
-IDD_InfoUrl DIALOG  0, 0, 347, 261
+IDD_InfoUrl DIALOG 0, 0, 347, 261
 STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "File download information"
 FONT 8, "MS Sans Serif"
@@ -690,7 +701,7 @@ BEGIN
     LTEXT           "More information:",IDC_STATIC_moreinfos,7,82,138,8
 END
 
-IDD_CatchUrl DIALOG  0, 0, 313, 164
+IDD_CatchUrl DIALOG 0, 0, 313, 164
 STYLE DS_SETFONT | DS_MODALFRAME | WS_CAPTION
 CAPTION "Catch URL!"
 FONT 8, "MS Sans Serif"
@@ -701,7 +712,7 @@ BEGIN
     LTEXT           "This will send the desired link from your browser to WinHTTrack.",IDC_STATIC_info2,7,113,299,25
 END
 
-IDD_OPTION11 DIALOG  0, 0, 303, 178
+IDD_OPTION11 DIALOG 0, 0, 303, 178
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
 CAPTION "MIME types"
 FONT 8, "MS Sans Serif"
@@ -737,7 +748,7 @@ BEGIN
     CTEXT           "<-------->",IDC_STATIC,85,140,35,15,SS_CENTERIMAGE
 END
 
-IDD_FirstInfo DIALOG  0, 0, 348, 130
+IDD_FirstInfo DIALOG 0, 0, 348, 130
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -745,7 +756,7 @@ BEGIN
     ICON            IDI_SPLASH,IDC_SPLASH,161,7,20,20,SS_CENTERIMAGE | SS_REALSIZEIMAGE
 END
 
-IDD_BatchUpdate DIALOG  0, 0, 322, 177
+IDD_BatchUpdate DIALOG 0, 0, 322, 177
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -799,7 +810,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_WIZ1, DIALOG
     BEGIN
@@ -1799,6 +1810,14 @@ BEGIN
     IDC_robots, 0x403, 24, 0
 0x6f66, 0x6c6c, 0x776f, 0x7220, 0x626f, 0x746f, 0x2e73, 0x7874, 0x2074, 
 0x7572, 0x656c, 0x0073, 
+    IDC_cookies, 0x403, 4, 0
+0x4e20, 0x006f, 
+    IDC_cookies, 0x403, 35, 0
+0x5920, 0x7365, 0x7320, 0x6f74, 0x6572, 0x6120, 0x2073, 0x656e, 0x7374, 
+0x6163, 0x6570, 0x6320, 0x6f6f, 0x696b, 0x7365, 0x742e, 0x7478, "\000" 
+    IDC_cookies, 0x403, 19, 0
+0x6559, 0x2c73, 0x7320, 0x6f74, 0x6572, 0x6120, 0x2073, 0x534a, 0x4e4f, 
+"\000" 
     0
 END
 
@@ -2292,21 +2311,37 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_OPTION10 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_OPTION8 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "WinHTTrack Website Copier\nNew Project \n\nWinHTTrack Website Copier Projects (*.whtt)\n.whtt\nWinHTTrackProject\nWinHTTrack Project"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "WinHTTrack Website Copier"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -2316,7 +2351,7 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_NEW             "Create new project\nNew"
     ID_FILE_OPEN            "Open existing project\nOpen"
@@ -2325,14 +2360,14 @@ BEGIN
     ID_FILE_SAVE_AS         "Save active project under a different name\nSave As"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "Display of program information, version number and copyright\nAbout"
     ID_APP_EXIT             "Quit WinHTTrack Website Copier\nExit"
     ID_HELP                 "Help contents\nHelp contents"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_MRU_FILE1       "Open this document"
     ID_FILE_MRU_FILE2       "Open this document"
@@ -2352,18 +2387,18 @@ BEGIN
     ID_FILE_MRU_FILE16      "Open this document"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
     ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "Erase the selection\nErase"
     ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
@@ -2378,13 +2413,13 @@ BEGIN
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
     ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "Change the window size"
     AFX_IDS_SCMOVE          "Change the window position"
@@ -2395,13 +2430,13 @@ BEGIN
     AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "Restore the window to normal size"
     AFX_IDS_SCTASKLIST      "Activate Task List"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_ClearDefaultOptions  "Reset to default options and preferences\nClear default options"
     ID_LOG_VIEWTRANSFERS    "View current mirroring transfers\nView transfers"
@@ -2410,7 +2445,7 @@ BEGIN
     ID_FILE_DELETE_PROJ     "Delete a project\nDelete"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_LOG_VIEWLOG          "View mirroring report (general information, errors..)\nView log"
     ID_LOG_VIEWERRORLOG     "View mirroring report (general information, errors..)\nView log"
@@ -2424,23 +2459,23 @@ BEGIN
     IDC_langprefs           "Select language according to preference\nLanguage preference"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDC_ipabout             "Displays information about WinHTTrack Website Copier"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_ABOUT                "About WinHTTrack Website Copier\nAbout"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_UPDATE               "Check WinHTTrack Website Copier Updates\nUpdate"
     ID_FILE_BROWSE_SIT      "Browse Websites\nBrowse"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -2448,10 +2483,8 @@ END
 // French (France) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
-#ifdef _WIN32
 LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -2462,12 +2495,13 @@ LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
 // remains consistent on all systems.
 IDI_SPLASH              ICON                    "res\\ico00001.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDR_HELPFRM MENU 
+IDR_HELPFRM MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -2489,7 +2523,7 @@ END
 // Dialog
 //
 
-IDD_DIALOGCONTAINER_FORM DIALOG  0, 0, 173, 96
+IDD_DIALOGCONTAINER_FORM DIALOG 0, 0, 173, 96
 STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -2540,12 +2574,14 @@ END
 
 IDC_CURSWWW             CURSOR                  "res\\www.cur"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // RT_MANIFEST
 //
 
 1                       RT_MANIFEST             "res\\manifest.xml"
+
 #endif    // French (France) resources
 /////////////////////////////////////////////////////////////////////////////
 

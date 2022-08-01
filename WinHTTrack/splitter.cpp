@@ -143,15 +143,15 @@ void CSplitterFrame::CheckRestore() {
 
 
 BOOL CSplitterFrame::Create( LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle , const RECT& rect , CMDIFrameWnd* pParentWnd , CCreateContext* pContext ) {
-  /* recréer control tabs */
+  /* recrï¿½er control tabs */
   this_app->NewTabs();
 
-  // Enlever bordure fenêtre, et mettre en plein écran (pas de fenêtre dans la fenêtre!!)
+  // Enlever bordure fenï¿½tre, et mettre en plein ï¿½cran (pas de fenï¿½tre dans la fenï¿½tre!!)
   dwStyle&=(~(WS_MINIMIZEBOX|WS_BORDER|WS_CAPTION|WS_OVERLAPPED|WS_OVERLAPPEDWINDOW));
   dwStyle|=(WS_MAXIMIZE);
   int r=CMDIChildWnd::Create(lpszClassName,lpszWindowName,dwStyle ,rect ,pParentWnd ,pContext );
   if (r) {
-    // Mettre en maximisé
+    // Mettre en maximisï¿½
     WINDOWPLACEMENT pl;
     RECT rc;
     rc.top=0;
@@ -173,7 +173,7 @@ BOOL CSplitterFrame::Create( LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWOR
   icnd.uCallbackMessage=wm_IcnRest;  // notre callback
   icnd.hIcon=AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
-  // Retourner résultat
+  // Retourner rï¿½sultat
   return r;
 }
 
@@ -285,7 +285,7 @@ BOOL CSplitterFrame::SetNewView(int row, int col, CRuntimeClass* pViewClass) {
   m_wndSplitter.DeleteView(row, col);                // delete old view
 
   /* */
-  /* recréer control tabs */
+  /* recrï¿½er control tabs */
   this_app->NewTabs();
   /* */
 
@@ -308,7 +308,7 @@ BOOL CSplitterFrame::SetNewView(int row, int col, CRuntimeClass* pViewClass) {
 }
 
 BOOL CSplitterFrame::SetSaved() {
-  GetActiveDocument()->SetModifiedFlag(FALSE);      // Document sauvé
+  GetActiveDocument()->SetModifiedFlag(FALSE);      // Document sauvï¿½
   return 1;
 }
 
@@ -361,7 +361,7 @@ void CSplitterFrame::EnableSaveEntries(BOOL state) {
 }
 
 void CSplitterFrame::SetMenuPrefs() {
-  if (LANG_T(-1)) {    // Patcher en français
+  if (LANG_T(-1)) {    // Patcher en franï¿½ais
     CMenu* menu = GetParent()->GetParent()->GetMenu();
     if (menu) {
       ModifyMenuCP(menu, 0,MF_BYPOSITION,0,LANG(LANG_P1));
