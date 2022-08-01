@@ -1,0 +1,4 @@
+.nuke/temp
+.nuke/build.schema.json
+build/Properties/launchSettings.json
+build/_build.csproj.DotSettings
