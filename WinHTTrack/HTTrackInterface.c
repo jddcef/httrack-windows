@@ -45,128 +45,128 @@ Please visit our Website: http://www.httrack.com
 #include "HTTrackInterface.h"
 
 // Lecture d'une ligne (peut �tre unicode � priori)
-int linput(FILE* fp,char* s,int max) {
-  int c;
-  int j=0;
-  do {
-    c=fgetc(fp);
-    if (c!=EOF) {
-      switch(c) {
-        case 13: break;  // sauter CR
-        case 10: c=-1; break;
-        case 9: case 12: break;  // sauter ces caract�res
-        default: s[j++]=(char) c; break;
-      }
-    }
-  }  while((c!=-1) && (c!=EOF) && (j<(max-1)));
-  s[j]='\0';
-  return j;
+int linput(FILE* fp, char* s, int max) {
+	int c;
+	int j = 0;
+	do {
+		c = fgetc(fp);
+		if (c != EOF) {
+			switch (c) {
+			case 13: break;  // sauter CR
+			case 10: c = -1; break;
+			case 9: case 12: break;  // sauter ces caract�res
+			default: s[j++] = (char)c; break;
+			}
+		}
+	} while ((c != -1) && (c != EOF) && (j < (max - 1)));
+	s[j] = '\0';
+	return j;
 }
-int linput_trim(FILE* fp,char* s,int max) {
-  int rlen=0;
-  char* ls=(char*) malloct(max+2);
-  s[0]='\0';
-  if (ls) {
-    char* a;
-    // lire ligne
-    rlen=linput(fp,ls,max);
-    if (rlen) {
-      // sauter espaces et tabs en fin
-      while( (rlen>0) && ((ls[max(rlen-1,0)]==' ') || (ls[max(rlen-1,0)]=='\t')) )
-        ls[--rlen]='\0';
-      // sauter espaces en d�but
-      a=ls;
-      while((rlen>0) && ((*a==' ') || (*a=='\t'))) {
-        a++;
-        rlen--;
-      }
-      if (rlen>0) {
-        memcpy(s,a,rlen);      // can copy \0 chars
-        s[rlen]='\0';
-      }
-    }
-    //
-    freet(ls);
-  }
-  return rlen;
+int linput_trim(FILE* fp, char* s, int max) {
+	int rlen = 0;
+	char* ls = (char*)malloct(max + 2);
+	s[0] = '\0';
+	if (ls) {
+		char* a;
+		// lire ligne
+		rlen = linput(fp, ls, max);
+		if (rlen) {
+			// sauter espaces et tabs en fin
+			while ((rlen > 0) && ((ls[max(rlen - 1, 0)] == ' ') || (ls[max(rlen - 1, 0)] == '\t')))
+				ls[--rlen] = '\0';
+			// sauter espaces en d�but
+			a = ls;
+			while ((rlen > 0) && ((*a == ' ') || (*a == '\t'))) {
+				a++;
+				rlen--;
+			}
+			if (rlen > 0) {
+				memcpy(s, a, rlen);      // can copy \0 chars
+				s[rlen] = '\0';
+			}
+		}
+		//
+		freet(ls);
+	}
+	return rlen;
 }
-int linput_cpp(FILE* fp,char* s,int max) {
-  int rlen=0;
-  s[0]='\0';
-  do {
-    int ret;
-    if (rlen>0)
-    if (s[rlen-1]=='\\')
-      s[--rlen]='\0';      // couper \ final
-    // lire ligne
-    ret=linput_trim(fp,s+rlen,max-rlen);
-    if (ret>0)
-      rlen+=ret;
-  } while((s[max(rlen-1,0)]=='\\') && (rlen<max));
-  return rlen;
+int linput_cpp(FILE* fp, char* s, int max) {
+	int rlen = 0;
+	s[0] = '\0';
+	do {
+		int ret;
+		if (rlen > 0)
+			if (s[rlen - 1] == '\\')
+				s[--rlen] = '\0';      // couper \ final
+			  // lire ligne
+		ret = linput_trim(fp, s + rlen, max - rlen);
+		if (ret > 0)
+			rlen += ret;
+	} while ((s[max(rlen - 1, 0)] == '\\') && (rlen < max));
+	return rlen;
 }
 
 // idem avec les car sp�ciaux
-void rawlinput(FILE* fp,char* s,int max) {
-  int c;
-  int j=0;
-  do {
-    c=fgetc(fp);
-    if (c!=EOF) {
-      switch(c) {
-        case 13: break;  // sauter CR
-        case 10: c=-1; break;
-        default: s[j++]=(char) c; break;
-      }
-    }
-  }  while((c!=-1) && (c!=EOF) && (j<(max-1)));
-  s[j++]='\0';
+void rawlinput(FILE* fp, char* s, int max) {
+	int c;
+	int j = 0;
+	do {
+		c = fgetc(fp);
+		if (c != EOF) {
+			switch (c) {
+			case 13: break;  // sauter CR
+			case 10: c = -1; break;
+			default: s[j++] = (char)c; break;
+			}
+		}
+	} while ((c != -1) && (c != EOF) && (j < (max - 1)));
+	s[j++] = '\0';
 }
 
 // Like linput, but in memory (optimized)
-int binput(char* buff,char* s,int max) {
-  int count = 0;
-  int destCount = 0;
+int binput(char* buff, char* s, int max) {
+	int count = 0;
+	int destCount = 0;
 
-  // Note: \0 will return 1
-  while(destCount < max && buff[count] != '\0' && buff[count] != '\n') {
-    if (buff[count] != '\r') {
-      s[destCount++] = buff[count];
-    }
+	// Note: \0 will return 1
+	while (destCount < max && buff[count] != '\0' && buff[count] != '\n') {
+		if (buff[count] != '\r') {
+			s[destCount++] = buff[count];
+		}
 		count++;
-  }
-  s[destCount] = '\0';
+	}
+	s[destCount] = '\0';
 
-  // then return the supplemental jump offset
-  return count + 1;
-} 
+	// then return the supplemental jump offset
+	return count + 1;
+}
 
 int fexist(const char* s) {
-  struct stat st;
-  memset(&st, 0, sizeof(st));
-  if (stat(s, &st) == 0) {
-    if (S_ISREG(st.st_mode)) {
-      return 1;
-    }
-  }
-  return 0;
-} 
+	struct stat st;
+	memset(&st, 0, sizeof(st));
+	if (stat(s, &st) == 0) {
+		if (S_ISREG(st.st_mode)) {
+			return 1;
+		}
+	}
+	return 0;
+}
 
 size_t fsize(const char* s) {
-  FILE* fp;
-  fp=fopen(s,"rb");
-  if (fp!=NULL) {
-    size_t i;
-    fseek(fp,0,SEEK_END);
-    i = ftell(fp);
-    fclose(fp);
-    return i;
-  } else
-    return -1;
+	FILE* fp;
+	fp = fopen(s, "rb");
+	if (fp != NULL) {
+		size_t i;
+		fseek(fp, 0, SEEK_END);
+		i = ftell(fp);
+		fclose(fp);
+		return i;
+	} else
+		return -1;
 }
 
 TStamp time_local(void) {
-  return ((TStamp) time(NULL));
+	return ((TStamp)time(NULL));
 }
 
 /* / et \\ en / */
@@ -183,16 +183,16 @@ TStamp time_local(void) {
 //}
 
 // conversion minuscules, avec buffer
-char* convtolower(char* catbuff,const char* a) {
-  strcpybuff(catbuff, a);
-  hts_lowcase(catbuff);  // lower case
+char* convtolower(char* catbuff, const char* a) {
+	strcpybuff(catbuff, a);
+	hts_lowcase(catbuff);  // lower case
 	return catbuff;
 }
 
 // conversion en minuscules
 void hts_lowcase(char* s) {
-  int i;
-  for(i=0;i<(int) strlen(s);i++)
-    if ((s[i]>='A') && (s[i]<='Z'))
-      s[i]+=('a'-'A');
+	int i;
+	for (i = 0; i < (int)strlen(s); i++)
+		if ((s[i] >= 'A') && (s[i] <= 'Z'))
+			s[i] += ('a' - 'A');
 }

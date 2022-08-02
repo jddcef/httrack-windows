@@ -34,19 +34,19 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CMDIFrameWnd::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-/*
-	if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP
-		| CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
-		!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
-	{
-		TRACE0("Failed to create toolbar\n");
-		return -1;      // fail to create
-	}
-*/
+	/*
+		if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | CBRS_TOP
+			| CBRS_GRIPPER | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC) ||
+			!m_wndToolBar.LoadToolBar(IDR_MAINFRAME))
+		{
+			TRACE0("Failed to create toolbar\n");
+			return -1;      // fail to create
+		}
+	*/
 
 	if (!m_wndStatusBar.Create(this) ||
 		!m_wndStatusBar.SetIndicators(indicators,
-		  sizeof(indicators)/sizeof(UINT)))
+			sizeof(indicators) / sizeof(UINT)))
 	{
 		TRACE0("Failed to create status bar\n");
 		return -1;      // fail to create
@@ -60,7 +60,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	DockControlBar(&m_wndToolBar);
 */
 
-  return 0;
+	return 0;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -93,9 +93,9 @@ static BOOL PASCAL NEAR ReadWindowPlacement(LPWINDOWPLACEMENT pwp)
 }
 
 static void PASCAL NEAR WriteWindowPlacement(LPWINDOWPLACEMENT pwp)
-	// write a window placement to settings section of app's ini file
+// write a window placement to settings section of app's ini file
 {
-	TCHAR szBuffer[sizeof("-32767")*8 + sizeof("65535")*2];
+	TCHAR szBuffer[sizeof("-32767") * 8 + sizeof("65535") * 2];
 
 	wsprintf(szBuffer, szFormat,
 		pwp->flags, pwp->showCmd,
@@ -137,18 +137,18 @@ void CMainFrame::OnClose()
 		WriteWindowPlacement(&wp);
 	}
 
-  /* Ask question (exit) ? */
-  if (
-    (strcmp(WhttLocation,"FirstInfo") == 0)
-    ||
-    (strcmp(WhttLocation,"Wid1") == 0)
-    ||
-    (strcmp(WhttLocation,"Infoend") == 0)
-    ) {
-    /* Direct */
- 	  CMDIFrameWnd::OnClose();
-  } else {
-    if (AfxMessageBox(LANG(LANG_J1),MB_OKCANCEL)==IDOK)
-  	  CMDIFrameWnd::OnClose();
-  }
+	/* Ask question (exit) ? */
+	if (
+		(strcmp(WhttLocation, "FirstInfo") == 0)
+		||
+		(strcmp(WhttLocation, "Wid1") == 0)
+		||
+		(strcmp(WhttLocation, "Infoend") == 0)
+		) {
+		/* Direct */
+		CMDIFrameWnd::OnClose();
+	} else {
+		if (AfxMessageBox(LANG(LANG_J1), MB_OKCANCEL) == IDOK)
+			CMDIFrameWnd::OnClose();
+	}
 }

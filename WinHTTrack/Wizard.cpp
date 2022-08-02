@@ -45,21 +45,21 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // wizard message handlers
 
-BOOL wizard::OnInitDialog() 
+BOOL wizard::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	
-  SetIcon(httrack_icon,false);
-  SetIcon(httrack_icon,true);  
-  SetForegroundWindow();   // yop en premier plan!
 
-  // Patcher l'interface pour les Français ;-)
-  if (LANG_T(-1)) {    // Patcher en français
-    //SetDlgItemText(,"");
-    SetWindowTextCP(this, LANG(LANG_L1) /*"Question du wizard"*/);
-    SetDlgItemTextCP(this, IDC_STATIC_answer,LANG(LANG_L2) /*"Votre réponse:"*/);
-  }
+	SetIcon(httrack_icon, false);
+	SetIcon(httrack_icon, true);
+	SetForegroundWindow();   // yop en premier plan!
+
+	// Patcher l'interface pour les Franï¿½ais ;-)
+	if (LANG_T(-1)) {    // Patcher en franï¿½ais
+	  //SetDlgItemText(,"");
+		SetWindowTextCP(this, LANG(LANG_L1) /*"Question du wizard"*/);
+		SetDlgItemTextCP(this, IDC_STATIC_answer, LANG(LANG_L2) /*"Votre rï¿½ponse:"*/);
+	}
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+				  // EXCEPTION: OCX Property Pages should return FALSE
 }

@@ -13,7 +13,7 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 extern "C" {
-  #include "HTTrackInterface.h"
+#include "HTTrackInterface.h"
 }
 
 /* dialog0 */
@@ -74,8 +74,7 @@ void CWinHTTrackDoc::Serialize(CArchive& ar)
 	if (ar.IsStoring())
 	{
 		// TODO: add storing code here
-	}
-	else
+	} else
 	{
 		// TODO: add loading code here
 	}
@@ -99,94 +98,94 @@ void CWinHTTrackDoc::Dump(CDumpContext& dc) const
 /////////////////////////////////////////////////////////////////////////////
 // CWinHTTrackDoc commands
 
-BOOL CWinHTTrackDoc::OnSaveDocument(LPCTSTR lpszPathName) 
+BOOL CWinHTTrackDoc::OnSaveDocument(LPCTSTR lpszPathName)
 {
 	// TODO: Add your specialized code here and/or call the base class
-	
+
 	//return CDocument::OnSaveDocument(lpszPathName);
   //AfxMessageBox(lpszPathName);
 
-  if (dialog0) {
-    CString PathName=lpszPathName;
-    int pos=PathName.ReverseFind('.');
-    if (pos>=0) {
-      if (PathName.Mid(pos)==".whtt") {
-        if (dialog0->GetPath0()+".whtt" != LPCSTR(lpszPathName)) {
-          switch(AfxMessageBox(LANG_G26b,MB_YESNOCANCEL)) {
-          case IDYES:
-            {
-              CString path=lpszPathName;
-              int pos=path.ReverseFind('.');
-              if (pos>=0) {
-                CString dir=path.Left(pos);           // enlever .whtt
-                pos=path.ReverseFind('\\');
-                dialog0->m_projname=dir.Mid(pos+1);
-                dialog0->m_projpath=dir.Left(pos);
-              }
-            }
-            break;
-          case IDNO:
-            break;
-          default:
-            return 0;
-            break;
-          }
-        }
-      }
-    }
-    
-    Save_current_profile(0);
-  }
- 
-  return 1;
+	if (dialog0) {
+		CString PathName = lpszPathName;
+		int pos = PathName.ReverseFind('.');
+		if (pos >= 0) {
+			if (PathName.Mid(pos) == ".whtt") {
+				if (dialog0->GetPath0() + ".whtt" != LPCSTR(lpszPathName)) {
+					switch (AfxMessageBox(LANG_G26b, MB_YESNOCANCEL)) {
+					case IDYES:
+					{
+						CString path = lpszPathName;
+						int pos = path.ReverseFind('.');
+						if (pos >= 0) {
+							CString dir = path.Left(pos);           // enlever .whtt
+							pos = path.ReverseFind('\\');
+							dialog0->m_projname = dir.Mid(pos + 1);
+							dialog0->m_projpath = dir.Left(pos);
+						}
+					}
+					break;
+					case IDNO:
+						break;
+					default:
+						return 0;
+						break;
+					}
+				}
+			}
+		}
+
+		Save_current_profile(0);
+	}
+
+	return 1;
 }
 
-BOOL CWinHTTrackDoc::OnOpenDocument(LPCTSTR lpszPathName) 
+BOOL CWinHTTrackDoc::OnOpenDocument(LPCTSTR lpszPathName)
 {
 	/*if (!CDocument::OnOpenDocument(lpszPathName))
 		return FALSE;
-    */
-  CFileStatus status;
-  if (CFile::GetStatus(lpszPathName,status)) {
-    CString PathName=lpszPathName;
+	*/
+	CFileStatus status;
+	if (CFile::GetStatus(lpszPathName, status)) {
+		CString PathName = lpszPathName;
 
-    /* si répertoire, convertir d'abord en .whtt */
-    if (status.m_attribute & 0x10 ) {       /* directory = 0x10 */
-      PathName+=".whtt";
-    }
-    
-    int pos=PathName.ReverseFind('.');
-    if (pos>=0) {
-      if (PathName.Mid(pos)==".whtt") {
-        CString dir=PathName.Left(pos)+"\\";
-        CString profile=dir+"hts-cache\\winprofile.ini";    
-        Read_profile((char*) LPCTSTR(profile),1);
-        //if (fexist((char*) LPCTSTR(profile))) {
-        //} else {
-          //AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
-          /*return FALSE;*/
-        //}
-		if (dialog0->m_projname.GetLength() > 0) {
-          this_CWizTab->PressButton(PSBTN_NEXT);
-          this_CWizTab->PressButton(PSBTN_NEXT);
+		/* si rï¿½pertoire, convertir d'abord en .whtt */
+		if (status.m_attribute & 0x10) {       /* directory = 0x10 */
+			PathName += ".whtt";
 		}
-      } else {
-        AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
-        return FALSE;
-      }
-    } else {
-      AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
-      return FALSE;
-    }
-  } else {
-    AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
-    return FALSE;
-  }
-  
-  return TRUE;
+
+		int pos = PathName.ReverseFind('.');
+		if (pos >= 0) {
+			if (PathName.Mid(pos) == ".whtt") {
+				CString dir = PathName.Left(pos) + "\\";
+				CString profile = dir + "hts-cache\\winprofile.ini";
+				Read_profile((char*)LPCTSTR(profile), 1);
+				//if (fexist((char*) LPCTSTR(profile))) {
+				//} else {
+				  //AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
+				  /*return FALSE;*/
+				//}
+				if (dialog0->m_projname.GetLength() > 0) {
+					this_CWizTab->PressButton(PSBTN_NEXT);
+					this_CWizTab->PressButton(PSBTN_NEXT);
+				}
+			} else {
+				AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
+				return FALSE;
+			}
+		} else {
+			AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
+			return FALSE;
+		}
+	} else {
+		AfxMessageBox(LANG(LANG_G26 /*"File not found!","Fichier introuvable!"*/));
+		return FALSE;
+	}
+
+	return TRUE;
 }
 
-void CWinHTTrackDoc::OnCloseDocument() 
+void CWinHTTrackDoc::OnCloseDocument()
 {
 	// TODO: Add your specialized code here and/or call the base class
 	CDocument::OnCloseDocument();

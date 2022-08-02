@@ -9,9 +9,9 @@
 
 extern CNewProj* dialog0;
 extern "C" {
-  #include "HTTrackInterface.h"
-  //#include "htsbase.h"
-  HTS_INLINE int fspc(FILE* fp,const char* type);
+#include "HTTrackInterface.h"
+	//#include "htsbase.h"
+	HTS_INLINE int fspc(FILE* fp, const char* type);
 }
 
 #ifdef _DEBUG
@@ -29,7 +29,7 @@ extern Cinprogress* inprogress;
 
 /* Externe C */
 extern "C" {
-  #include "HTTrackInterface.h"
+#include "HTTrackInterface.h"
 };
 
 // Helper
@@ -45,8 +45,8 @@ extern CSplitterFrame* this_CSplitterFrame;
 extern CWizTab* this_CWizTab;
 extern CWizTab* this_intCWizTab2;
 
-/* Objet lui même */
-Cinfoend* this_Cinfoend=NULL;
+/* Objet lui mï¿½me */
+Cinfoend* this_Cinfoend = NULL;
 
 /////////////////////////////////////////////////////////////////////////////
 // Cinfoend dialog
@@ -56,13 +56,13 @@ IMPLEMENT_DYNCREATE(Cinfoend, CPropertyPage)
 Cinfoend::Cinfoend()
 	: CPropertyPage(Cinfoend::IDD)
 {
-  this_Cinfoend=this;
+	this_Cinfoend = this;
 	//{{AFX_DATA_INIT(Cinfoend)
 	//}}AFX_DATA_INIT
 }
 
 Cinfoend::~Cinfoend() {
-  this_Cinfoend=NULL;
+	this_Cinfoend = NULL;
 }
 
 void Cinfoend::DoDataExchange(CDataExchange* pDX)
@@ -81,85 +81,85 @@ BEGIN_MESSAGE_MAP(Cinfoend, CPropertyPage)
 	ON_WM_TIMER()
 	ON_WM_DESTROY()
 	//}}AFX_MSG_MAP
-  ON_NOTIFY_EX( TTN_NEEDTEXT, 0, OnToolTipNotify )
-  ON_COMMAND(ID_HELP_FINDER,OnHelpInfo2)
-  ON_COMMAND(ID_HELP,OnHelpInfo2)
-	ON_COMMAND(ID_DEFAULT_HELP,OnHelpInfo2)
+	ON_NOTIFY_EX(TTN_NEEDTEXT, 0, OnToolTipNotify)
+	ON_COMMAND(ID_HELP_FINDER, OnHelpInfo2)
+	ON_COMMAND(ID_HELP, OnHelpInfo2)
+	ON_COMMAND(ID_DEFAULT_HELP, OnHelpInfo2)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // Cinfoend message handlers
 
-BOOL Cinfoend::OnInitDialog() 
+BOOL Cinfoend::OnInitDialog()
 {
-  UpdateData(false);      // force to call DoDataExchange
+	UpdateData(false);      // force to call DoDataExchange
 
-	//CPropertyPage::OnInitDialog();
-	
-  SetIcon(httrack_icon,false);
-  SetIcon(httrack_icon,true);  
-  EnableToolTips(true);     // TOOL TIPS
-  //SetForegroundWindow();   // yop en premier plan!
+	  //CPropertyPage::OnInitDialog();
 
-  // Patcher l'interface pour les Français ;-)
-  if (LANG_T(-1)) {    // Patcher en français
-    //SetDlgItemTextCP(this, ,"");
-    //SetWindowTextCP(this, LANG(LANG_D6) /*"Fin du miroir"*/);
-    SetDlgItemTextCP(this, IDlog,LANG(LANG_D7) /*"Voir fichier d'audit"*/);
-    SetDlgItemTextCP(this, IDbrowse,LANG(LANG_D8) /*"Lancer Web"*/);
-    SetDlgItemTextCP(this_CWizTab, IDCANCEL,LANG_QUIT);
-    //SetDlgItemTextCP(this, IDC_NewProject,LANG_D9);
-    //SetDlgItemTextCP(this, IDOK,LANG_OK);
-  }
+	SetIcon(httrack_icon, false);
+	SetIcon(httrack_icon, true);
+	EnableToolTips(true);     // TOOL TIPS
+	//SetForegroundWindow();   // yop en premier plan!
 
-  int error = HTS_STAT.stat_errors;
-  if (error) {
-    SetDlgItemTextCP(this, IDlog,LANG_O14);
-    tm=SetTimer(WM_TIMER,250,NULL);
-  }
+	// Patcher l'interface pour les Franï¿½ais ;-)
+	if (LANG_T(-1)) {    // Patcher en franï¿½ais
+	  //SetDlgItemTextCP(this, ,"");
+	  //SetWindowTextCP(this, LANG(LANG_D6) /*"Fin du miroir"*/);
+		SetDlgItemTextCP(this, IDlog, LANG(LANG_D7) /*"Voir fichier d'audit"*/);
+		SetDlgItemTextCP(this, IDbrowse, LANG(LANG_D8) /*"Lancer Web"*/);
+		SetDlgItemTextCP(this_CWizTab, IDCANCEL, LANG_QUIT);
+		//SetDlgItemTextCP(this, IDC_NewProject,LANG_D9);
+		//SetDlgItemTextCP(this, IDOK,LANG_OK);
+	}
+
+	int error = HTS_STAT.stat_errors;
+	if (error) {
+		SetDlgItemTextCP(this, IDlog, LANG_O14);
+		tm = SetTimer(WM_TIMER, 250, NULL);
+	}
 
 	return TRUE;
 }
 
-void Cinfoend::Onlog() 
+void Cinfoend::Onlog()
 {
 	char catbuff[CATBUFF_SIZE];
-  char pathlog[HTS_URLMAXSIZE*2];
-  strcpybuff(pathlog,dialog0->GetPath());
-  Ciplog form;
-  if (strlen(pathlog)>0)
-  if ((pathlog[strlen(pathlog)-1]!='/') && (pathlog[strlen(pathlog)-1]!='\\'))
-    strcatbuff(pathlog,"/");
-  // fichier log existe ou on est télécommandé par un !
-  if ( (fexist(fconcat(catbuff,sizeof(catbuff),pathlog,"hts-err.txt")))
-    || (fexist(fconcat(catbuff,sizeof(catbuff),pathlog,"hts-log.txt"))) ) {
-    strcpybuff(form.pathlog,pathlog);
-    form.DoModal();
-  } else {
-    char s[HTS_URLMAXSIZE*2];
-    sprintf(s,LANG(LANG_D1 /*"No log files in %s!"*/ ),pathlog);
-    AfxMessageBox(s,MB_OK+MB_ICONEXCLAMATION);
-  }
+	char pathlog[HTS_URLMAXSIZE * 2];
+	strcpybuff(pathlog, dialog0->GetPath());
+	Ciplog form;
+	if (strlen(pathlog) > 0)
+		if ((pathlog[strlen(pathlog) - 1] != '/') && (pathlog[strlen(pathlog) - 1] != '\\'))
+			strcatbuff(pathlog, "/");
+	// fichier log existe ou on est tï¿½lï¿½commandï¿½ par un !
+	if ((fexist(fconcat(catbuff, sizeof(catbuff), pathlog, "hts-err.txt")))
+		|| (fexist(fconcat(catbuff, sizeof(catbuff), pathlog, "hts-log.txt")))) {
+		strcpybuff(form.pathlog, pathlog);
+		form.DoModal();
+	} else {
+		char s[HTS_URLMAXSIZE * 2];
+		sprintf(s, LANG(LANG_D1 /*"No log files in %s!"*/), pathlog);
+		AfxMessageBox(s, MB_OK + MB_ICONEXCLAMATION);
+	}
 }
 
-void Cinfoend::Onbrowse() 
+void Cinfoend::Onbrowse()
 {
 	char catbuff[CATBUFF_SIZE];
-  char pathlog[HTS_URLMAXSIZE*2];
-  strcpybuff(pathlog,dialog0->GetPath());
-  if (strlen(pathlog)==0)
-    strcpybuff(pathlog,dialog0->GetPath());
-  Ciplog form;
-  if (strlen(pathlog)>0)
-  if ((pathlog[strlen(pathlog)-1]!='/') && (pathlog[strlen(pathlog)-1]!='\\'))
-    strcatbuff(pathlog,"\\");
-  if ( fexist(fconcat(catbuff,sizeof(catbuff),pathlog,"index.html")) ) {
-    ShellExecute(this->m_hWnd,"open",fconcat(catbuff,sizeof(catbuff),pathlog,"index.html"),"","",SW_RESTORE);	
-  } else {
-    char s[HTS_URLMAXSIZE*2];
-    sprintf(s,LANG(LANG_D2 /*"No index.html file in %s!"*/ ),pathlog);
-    AfxMessageBox(s,MB_OK+MB_ICONEXCLAMATION);
-  }
+	char pathlog[HTS_URLMAXSIZE * 2];
+	strcpybuff(pathlog, dialog0->GetPath());
+	if (strlen(pathlog) == 0)
+		strcpybuff(pathlog, dialog0->GetPath());
+	Ciplog form;
+	if (strlen(pathlog) > 0)
+		if ((pathlog[strlen(pathlog) - 1] != '/') && (pathlog[strlen(pathlog) - 1] != '\\'))
+			strcatbuff(pathlog, "\\");
+	if (fexist(fconcat(catbuff, sizeof(catbuff), pathlog, "index.html"))) {
+		ShellExecute(this->m_hWnd, "open", fconcat(catbuff, sizeof(catbuff), pathlog, "index.html"), "", "", SW_RESTORE);
+	} else {
+		char s[HTS_URLMAXSIZE * 2];
+		sprintf(s, LANG(LANG_D2 /*"No index.html file in %s!"*/), pathlog);
+		AfxMessageBox(s, MB_OK + MB_ICONEXCLAMATION);
+	}
 }
 
 
@@ -178,35 +178,35 @@ void Cinfoend::Onbrowse()
 // char* GetTip(int id);
 // et en generated message map
 // afx_msg BOOL OnToolTipNotify( UINT id, NMHDR * pNMHDR, LRESULT * pResult );
-BOOL Cinfoend::OnToolTipNotify( UINT id, NMHDR * pNMHDR, LRESULT * pResult )
+BOOL Cinfoend::OnToolTipNotify(UINT id, NMHDR* pNMHDR, LRESULT* pResult)
 {
-  TOOLTIPTEXT *pTTT = (TOOLTIPTEXT *)pNMHDR;
-  UINT_PTR nID =pNMHDR->idFrom;
-  if (pTTT->uFlags & TTF_IDISHWND)
-  {
-    // idFrom is actually the HWND of the tool
-    nID = ::GetDlgCtrlID((HWND)nID);
-    if(nID)
-    {
-      char* st=GetTip((int)nID);
-      if (st != "") {
-        pTTT->lpszText = st;
-        pTTT->hinst = AfxGetResourceHandle();
-        return(TRUE);
-      }
-    }
-  }
-  return(FALSE);
+	TOOLTIPTEXT* pTTT = (TOOLTIPTEXT*)pNMHDR;
+	UINT_PTR nID = pNMHDR->idFrom;
+	if (pTTT->uFlags & TTF_IDISHWND)
+	{
+		// idFrom is actually the HWND of the tool
+		nID = ::GetDlgCtrlID((HWND)nID);
+		if (nID)
+		{
+			char* st = GetTip((int)nID);
+			if (st != "") {
+				pTTT->lpszText = st;
+				pTTT->hinst = AfxGetResourceHandle();
+				return(TRUE);
+			}
+		}
+	}
+	return(FALSE);
 }
 char* Cinfoend::GetTip(int ID)
 {
-  switch(ID) {
-    case IDOK:     return LANG(LANG_D3 /*"Click to quit WinHTTrack"*/ ); break;
-    case IDlog:    return LANG(LANG_D4 /*"View log files"*/ ); break;
-    case IDbrowse: return LANG(LANG_D5 /*"Browse html start page"*/ ); break;
-    //case : return ""; break;
-  }
-  return "";
+	switch (ID) {
+	case IDOK:     return LANG(LANG_D3 /*"Click to quit WinHTTrack"*/); break;
+	case IDlog:    return LANG(LANG_D4 /*"View log files"*/); break;
+	case IDbrowse: return LANG(LANG_D5 /*"Browse html start page"*/); break;
+		//case : return ""; break;
+	}
+	return "";
 }
 // TOOL TIPS
 // ------------------------------------------------------------
@@ -215,85 +215,85 @@ char* Cinfoend::GetTip(int ID)
 
 // Appel aide
 void Cinfoend::OnHelpInfo2() {
-  (void) OnHelpInfo(NULL);
+	(void)OnHelpInfo(NULL);
 }
 
-BOOL Cinfoend::OnHelpInfo(HELPINFO* dummy) 
+BOOL Cinfoend::OnHelpInfo(HELPINFO* dummy)
 {
-  //return CPropertyPage::OnHelpInfo(pHelpInfo);
-  HtsHelper->Help("step5.html");
-  return true;
-  //AfxGetApp()->WinHelp(0,HELP_FINDER);    // Index du fichier Hlp
-  //return true;
+	//return CPropertyPage::OnHelpInfo(pHelpInfo);
+	HtsHelper->Help("step5.html");
+	return true;
+	//AfxGetApp()->WinHelp(0,HELP_FINDER);    // Index du fichier Hlp
+	//return true;
 }
 
-void Cinfoend::OnBye() 
+void Cinfoend::OnBye()
 {
-  //this_CSplitterFrame->SetNewView(0,1,RUNTIME_CLASS(CDialogContainer));	
-  // // // this_CWizTab2->DestroyWindow(); // crash!!
+	//this_CSplitterFrame->SetNewView(0,1,RUNTIME_CLASS(CDialogContainer));	
+	// // // this_CWizTab2->DestroyWindow(); // crash!!
 
-  //delete this_intCWizTab2->m_tabprogress;  // agh..
-  //this_intCWizTab2->m_tabprogress=NULL; inprogress=NULL; this_app->m_tabprogress=NULL;    // re agh..
+	//delete this_intCWizTab2->m_tabprogress;  // agh..
+	//this_intCWizTab2->m_tabprogress=NULL; inprogress=NULL; this_app->m_tabprogress=NULL;    // re agh..
 
-  /* tout effacer */
-  //##while(this_intCWizTab2->GetPageCount()>0)
-  //##  this_intCWizTab2->RemovePage(0);
-  
-  //##this_intCWizTab2=NULL;
-  GetMainWindow()->SendMessage(WM_COMMAND,wm_ViewRestart,0);
+	/* tout effacer */
+	//##while(this_intCWizTab2->GetPageCount()>0)
+	//##  this_intCWizTab2->RemovePage(0);
+
+	//##this_intCWizTab2=NULL;
+	GetMainWindow()->SendMessage(WM_COMMAND, wm_ViewRestart, 0);
 }
 
-BOOL Cinfoend::OnQueryCancel( ) {
-  //if (AfxMessageBox(LANG(LANG_J1),MB_OKCANCEL)==IDOK) {
-  /* Envoyer un WM_CLOSE à notre fenêtre principale */
-  GetMainWindow()->SendMessage(WM_CLOSE,0,0);
-  //}
-  return FALSE;
+BOOL Cinfoend::OnQueryCancel() {
+	//if (AfxMessageBox(LANG(LANG_J1),MB_OKCANCEL)==IDOK) {
+	/* Envoyer un WM_CLOSE ï¿½ notre fenï¿½tre principale */
+	GetMainWindow()->SendMessage(WM_CLOSE, 0, 0);
+	//}
+	return FALSE;
 }
 
-BOOL Cinfoend::OnSetActive( ) {
-  // détruire ICI sinon crash!!!!
-  WHTT_LOCATION("Infoend");
-  if (this_intCWizTab2) {
-    this_intCWizTab2->DestroyWindow();
-    delete this_intCWizTab2;
-    this_intCWizTab2=NULL;
-  }
+BOOL Cinfoend::OnSetActive() {
+	// dï¿½truire ICI sinon crash!!!!
+	WHTT_LOCATION("Infoend");
+	if (this_intCWizTab2) {
+		this_intCWizTab2->DestroyWindow();
+		delete this_intCWizTab2;
+		this_intCWizTab2 = NULL;
+	}
 
-  this_CWizTab->SetWizardButtons(PSWIZB_FINISH);
-  SetWindowTextCP(this_app->GetMainWnd(), LANG_F18b);
-  SetDlgItemTextCP(this_CWizTab, IDCANCEL,LANG_QUIT);
-  return 1;
+	this_CWizTab->SetWizardButtons(PSWIZB_FINISH);
+	SetWindowTextCP(this_app->GetMainWnd(), LANG_F18b);
+	SetDlgItemTextCP(this_CWizTab, IDCANCEL, LANG_QUIT);
+	return 1;
 }
 
-BOOL Cinfoend::OnWizardFinish( ) {
-  OnBye();
+BOOL Cinfoend::OnWizardFinish() {
+	OnBye();
 	return 0;
 }
 
 
-void Cinfoend::OnTimer(UINT_PTR nIDEvent) 
+void Cinfoend::OnTimer(UINT_PTR nIDEvent)
 {
-  static BOOL wflag=FALSE;
+	static BOOL wflag = FALSE;
 
-  wflag=!wflag;
+	wflag = !wflag;
 
-  CWnd* wnd=GetDlgItem(IDlog);
-  if (wnd) {
-    CString st="";
-    if (wflag)
-      st=LANG_O14;
-    SetDlgItemTextCP(this, IDlog,st);
-  }
-  
+	CWnd* wnd = GetDlgItem(IDlog);
+	if (wnd) {
+		CString st = "";
+		if (wflag)
+			st = LANG_O14;
+		SetDlgItemTextCP(this, IDlog, st);
+	}
+
 	CPropertyPage::OnTimer(nIDEvent);
 }
 
-void Cinfoend::OnDestroy() 
+void Cinfoend::OnDestroy()
 {
-  if (tm!=0) {
-    KillTimer(tm); 
-    tm=-1; 
-  }
+	if (tm != 0) {
+		KillTimer(tm);
+		tm = -1;
+	}
 	CPropertyPage::OnDestroy();
 }
