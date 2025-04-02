@@ -58,7 +58,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
       - name: Run './build.cmd Pack'
         run: ./build.cmd Pack
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v3
         with:
           name: httrack-${{matrix.BaseImage}}-${{matrix.Configuration}}-${{matrix.Arch}}
           path: final
