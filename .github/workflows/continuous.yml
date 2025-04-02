@@ -23,7 +23,8 @@ on:
   push:
     branches-ignore:
       - trash
-
+  workflow_dispatch: # This allows manual triggering of the workflow
+  
 jobs:
   continuous:
     name: Run
