@@ -32,8 +32,10 @@ jobs:
     strategy:
       matrix:
         BaseImage: [windows-latest]
-        Configuration: [Debug, Release]
-        Arch: [x86, x64]
+        #Configuration: [Debug, Release]
+        Configuration: [Release]
+        #Arch: [x86, x64]
+        Arch: [x64]
         exclude:
           - Arch: x86
             BaseImage: ubuntu-latest
@@ -50,7 +52,7 @@ jobs:
           fetch-depth: 0
           repository: mitchcapper/httrack-windows
       - name: Cache .nuke/temp, ~/.nuget/packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             .nuke/temp
