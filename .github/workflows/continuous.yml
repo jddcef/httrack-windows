@@ -51,6 +51,7 @@ jobs:
           submodules: recursive
           fetch-depth: 0
           repository: mitchcapper/httrack-windows
+          
       - name: Cache .nuke/temp, ~/.nuget/packages
         uses: actions/cache@v4
         with:
@@ -58,9 +59,21 @@ jobs:
             .nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
+
+      - name: Ensure .NET 8 runtime is available
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+          package-type: 'runtime'
+
+      - name: Show installed .NET runtimes (debug)
+        run: dotnet --list-runtimes
+          
       - name: Run './build.cmd Pack'
         run: ./build.cmd Pack
       - uses: actions/upload-artifact@v4
         with:
           name: httrack-${{matrix.BaseImage}}-${{matrix.Configuration}}-${{matrix.Arch}}
           path: final
+
+
