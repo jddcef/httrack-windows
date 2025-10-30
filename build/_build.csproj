@@ -3,11 +3,16 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace></RootNamespace>
+    <!-- Remove or set RootNamespace if needed -->
+    <!--<RootNamespace>Your.Namespace</RootNamespace>-->
     <NoWarn>CS0649;CS0169</NoWarn>
     <NukeRootDirectory>..</NukeRootDirectory>
     <NukeScriptDirectory>..</NukeScriptDirectory>
     <NukeTelemetryVersion>0</NukeTelemetryVersion>
+
+    <!-- Recommended modern settings -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="..\.nuke\temp\**" />
+    <!-- use forward slashes for portability -->
+    <None Remove="../.nuke/temp/**" />
   </ItemGroup>
 
 </Project>
