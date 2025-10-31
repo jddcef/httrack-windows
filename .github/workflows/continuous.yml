@@ -64,7 +64,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
-          package-type: 'runtime'
+          package-type: 'dotnet-version'
 
       - name: Show installed .NET runtimes (debug)
         run: dotnet --list-runtimes
