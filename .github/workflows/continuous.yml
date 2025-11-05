@@ -60,11 +60,11 @@ jobs:
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
 
-      - name: Ensure .NET 8 runtime is available
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
-          package-type: 'dotnet-version'
+#      - name: Ensure .NET 8 runtime is available
+#        uses: actions/setup-dotnet@v3
+#        with:
+#          dotnet-version: '8.0.x'
+#          package-type: 'dotnet-version'
 
       - name: Show installed .NET runtimes (debug)
         run: dotnet --list-runtimes
