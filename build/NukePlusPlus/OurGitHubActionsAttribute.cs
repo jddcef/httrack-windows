@@ -15,7 +15,7 @@ namespace NukePlusPlus {
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 	public class OurGitHubActionsAttribute : GitHubActionsAttribute {
-		public override ConfigurationEntity GetConfiguration(Type build, IReadOnlyCollection<Target> relevantTargets) {
+		public override GitHubActionsConfiguration GetConfiguration(Type build) {
 			this.build = build;
 			var orig = base.GetConfiguration(build, relevantTargets) as GitHubActionsConfiguration;
 			configuration.DetailedTriggers = orig.DetailedTriggers;
@@ -24,7 +24,7 @@ namespace NukePlusPlus {
 			configuration.ShortTriggers = orig.ShortTriggers;
 			return configuration;
 		}
-		internal NukeBuild build;
+		internal Type build;
 		protected OurGitHubActionsConfiguration configuration=new();
 		public OurGitHubActionsAttribute(string name, params object[] vals) : base(name, GitHubActionsImage.MacOs1014) {
 			job = new(this, configuration,  vals.Cast<Enum>().ToArray());
