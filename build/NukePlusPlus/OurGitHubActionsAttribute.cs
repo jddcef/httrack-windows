@@ -36,7 +36,7 @@ namespace NukePlusPlus {
 		
 
 		public OurGithubActionsJobWithMatrix job;
-		protected override IReadOnlyDictionary<string, GitHubActionsJob> GetJobs(GitHubActionsImage image, IReadOnlyCollection<ExecutableTarget> relevantTargets) {
+		protected override GitHubActionsJob GetJobs(GitHubActionsImage image, IReadOnlyCollection<ExecutableTarget> relevantTargets) {
 			var baseRes = base.GetJobs(image, relevantTargets);//just need to get its steps
 			var ourRet = job;
 			ourRet.Name = image.GetValue().Replace(".", "_");
