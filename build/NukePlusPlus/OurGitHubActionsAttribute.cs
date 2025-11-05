@@ -15,8 +15,8 @@ namespace NukePlusPlus {
 	[PublicAPI]
 	[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 	public class OurGitHubActionsAttribute : GitHubActionsAttribute {
-		public override GitHubActionsConfiguration GetConfiguration(Type build) {
-			this.build = build;
+		public override ConfigurationEntity GetConfiguration(IReadOnlyCollection<ExecutableTarget> relevantTargets) {
+			//this.build = build;
 			var orig = base.GetConfiguration(build, relevantTargets) as GitHubActionsConfiguration;
 			configuration.DetailedTriggers = orig.DetailedTriggers;
 			configuration.Jobs = orig.Jobs;
@@ -36,7 +36,7 @@ namespace NukePlusPlus {
 		
 
 		public OurGithubActionsJobWithMatrix job;
-		protected override IReadOnlyDictionary<string, GitHubActionsJob> GetJobs(Type buildType, IReadOnlyDictionary<string, Target> relevantTargets) {
+		protected override IReadOnlyDictionary<string, GitHubActionsJob> GetJobs(GitHubActionsImage image, IReadOnlyCollection<ExecutableTarget> relevantTargets) {
 			var baseRes = base.GetJobs(image, relevantTargets);//just need to get its steps
 			var ourRet = job;
 			ourRet.Name = image.GetValue().Replace(".", "_");
