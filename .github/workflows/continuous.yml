@@ -46,11 +46,11 @@ jobs:
       NUKE_Configuration: ${{matrix.Configuration}}
       NUKE_Arch: ${{matrix.Arch}}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-          repository: mitchcapper/httrack-windows
+#          repository: mitchcapper/httrack-windows
           
       - name: Cache .nuke/temp, ~/.nuget/packages
         uses: actions/cache@v4
