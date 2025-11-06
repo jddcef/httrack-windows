@@ -17,7 +17,7 @@ namespace NukePlusPlus {
 	public class OurGitHubActionsAttribute : GitHubActionsAttribute {
 		public override ConfigurationEntity GetConfiguration(IReadOnlyCollection<ExecutableTarget> relevantTargets) {
 			//this.build = build;
-			var orig = base.GetConfiguration(build, relevantTargets) as GitHubActionsConfiguration;
+			var orig = base.GetConfiguration(relevantTargets) as GitHubActionsConfiguration;
 			configuration.DetailedTriggers = orig.DetailedTriggers;
 			configuration.Jobs = orig.Jobs;
 			configuration.Name = orig.Name;
@@ -26,7 +26,7 @@ namespace NukePlusPlus {
 		}
 		internal Type build;
 		protected OurGitHubActionsConfiguration configuration=new();
-		public OurGitHubActionsAttribute(string name, params object[] vals) : base(name, GitHubActionsImage.MacOs1014) {
+		public OurGitHubActionsAttribute(string name, params object[] vals) : base(name, GitHubActionsImage.MacOs1015) {
 			job = new(this, configuration,  vals.Cast<Enum>().ToArray());
 			ActionName = name;
 		}

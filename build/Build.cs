@@ -163,19 +163,11 @@ class Build : OurNukeBuild {
 				//if (GitHubActions.Instance.Job.Contains("latest") == false)
 				//	forceFail = "CFLAGS=\" -D _WIN32\"";
 				LinConfigure($"--prefix=\"{OutputDirectory}\" {forceFail}", "httrack", logOutput: true, logInvocation: true);
-// replaces: LinMake("", "httrack", logOutput: true, logInvocation: true, customLogger: GCCLogHandler);
-LinMake(s => s
-    .SetArguments("httrack")
-    .SetLogOutput(true)
-    .SetLogInvocation(true)
-    .SetProcessLogger((outputType, line) => GCCLogHandler(outputType, line)));
+// replaces: LinMake("", "httrack", logOutput: true, logInvocation: true);
+LinMake("", "httrack", logOutput: true, logInvocation: true);
 	
-// replaces: LinMake("install", "httrack", logOutput: true, logInvocation: true, customLogger: GCCLogHandler);
-LinMake(s => s
-    .SetArguments("install httrack")
-    .SetLogOutput(true)
-    .SetLogInvocation(true)
-    .SetProcessLogger((outputType, line) => GCCLogHandler(outputType, line)));
+// replaces: LinMake("install", "httrack", logOutput: true, logInvocation: true);
+LinMake("install", "httrack", logOutput: true, logInvocation: true);
 
 
 
@@ -204,4 +196,3 @@ LinMake(s => s
 
 		});
 }
-

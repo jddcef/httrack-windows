@@ -27,7 +27,7 @@ namespace NukePlusPlus {
 		public ConfigurationEntity after { get; set; }
 
 		protected OurGithubActionsJobWithMatrix job { get; private set; }
-		protected NukeBuild build => attribute.build;
+		protected System.Type build => attribute.build;
 		protected OurGitHubActionsAttribute attribute { get; private set; }
 		WRITE_LEVEL IConfigurationEntityHasLevel.level => _level;
 

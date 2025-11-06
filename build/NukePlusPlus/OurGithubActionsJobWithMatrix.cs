@@ -51,7 +51,7 @@ namespace NukePlusPlus {
 				};
 				AllWriteItems.Insert(pos, newStep);
 			}
-			var oBuild = attribute.build as OurNukeBuild;
+			var oBuild = Activator.CreateInstance(attribute.build) as OurNukeBuild;
 			if (oBuild != null)
 				oBuild.DoWritingAdds(this);
 
@@ -117,15 +117,20 @@ namespace NukePlusPlus {
 			
 		}
 		private void Configuration_OnGlobalWriteBegin(object sender, CustomFileWriter writer) {
+			Console.WriteLine("OurGithubActionsJobWithMatrix.Configuration_OnGlobalWriteBegin: entering");
 			AddNewItem<GithubMatrixOptionWriter>(matrixWriter => {
 				matrixWriter.InitialRange = MatrixOptions;
 				this.matrixWriter = matrixWriter;
 			}
 				);
+			Console.WriteLine("OurGithubActionsJobWithMatrix.Configuration_OnGlobalWriteBegin: about to PrepareForWrite");
 			PrepareForWrite();
+			Console.WriteLine("OurGithubActionsJobWithMatrix.Configuration_OnGlobalWriteBegin: returned from PrepareForWrite");
 			var global = AllWriteItems.Where(a => (a as IConfigurationEntityHasLevel)?.level == BaseOurConfigurationEntity.WRITE_LEVEL.Global).ToArray();
+			Console.WriteLine($"OurGithubActionsJobWithMatrix.Configuration_OnGlobalWriteBegin: global items count = {global.Length}");
 			foreach(var itm in global) {
 				AllWriteItems.Remove(itm);
+				Console.WriteLine($"OurGithubActionsJobWithMatrix: writing global item of type {itm.GetType().FullName}");
 				itm.Write(writer);
 			}
 		}
