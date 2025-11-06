@@ -8,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace NukePlusPlus {
 	[PublicAPI]
 	[ExcludeFromCodeCoverage]
+	[Serializable]
 	public class OurMSBuildSettings : MSBuildSettings {
 		protected override Arguments ConfigureProcessArguments(Arguments arguments) {
 			var args = base.ConfigureProcessArguments(arguments);
