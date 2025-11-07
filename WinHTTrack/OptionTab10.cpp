@@ -43,7 +43,7 @@ COptionTab10::COptionTab10() : CPropertyPage(COptionTab10::IDD)
 	m_proxy = _T("");
 	m_port = _T("");
 	m_ftpprox = FALSE;
-	m_sslproxy = TRUE;
+	m_sslproxy = FALSE;
 	//}}AFX_DATA_INIT
 }
 
